@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 20160106225245) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "contracts", force: :cascade do |t|
+    t.string   "client"
+    t.string   "equipment"
+    t.integer  "term"
+    t.date     "initial_date"
+    t.date     "deadline"
+    t.float    "total_price"
+    t.string   "delivery_address"
+    t.string   "responsable"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "tools", force: :cascade do |t|
     t.text     "description"
     t.string   "serial_number"
