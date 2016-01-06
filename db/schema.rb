@@ -13,6 +13,23 @@
 
 ActiveRecord::Schema.define(version: 20160106225245) do
 
+  create_table "clients", force: :cascade do |t|
+    t.string   "razao_social"
+    t.string   "cnpj"
+    t.string   "nome_contato"
+    t.string   "telefone"
+    t.string   "email"
+    t.string   "logradouro"
+    t.integer  "numero"
+    t.string   "complemento"
+    t.string   "cep"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "uf"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "tools", force: :cascade do |t|
     t.text     "description"
     t.string   "serial_number"
