@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20160107223004) do
 
   add_index "contracts_tools", ["contract_id"], name: "index_contracts_tools_on_contract_id"
 
+  create_table "prices", force: :cascade do |t|
+    t.decimal  "price"
+    t.string   "tools_group"
+    t.integer  "deadline"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "tools", force: :cascade do |t|
     t.text     "description"
     t.string   "serial_number"
