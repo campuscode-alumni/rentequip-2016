@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature 'Show contract' do
   scenario 'successfully' do
-    client = Client.create(razao_social: 'Campus Code',
+    client = Client.create(company_name: 'Campus Code',
                            cnpj: '26.286.134/0001-04',
-                           nome_contato: 'Gustavo',
-                           telefone: '555-555',
+                           contact_name: 'Gustavo',
+                           phone: '555-555',
                            email: 'g@code.com')
 
     tool = Tool.create(name: 'Furadeira Blackdecker',
@@ -25,7 +25,7 @@ feature 'Show contract' do
 
     visit contract_path contract
 
-    expect(page).to have_content client.razao_social
+    expect(page).to have_content client.company_name
     expect(page).to have_content tool.name
     expect(page).to have_content 15
     expect(page).to have_content contract.initial_date

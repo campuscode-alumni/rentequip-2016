@@ -1,0 +1,5 @@
+<% @prices.each do |price| %>
+  <%= "%0.2f" % price.price %>
+  <%= price.tools_group %>
+  <%= price.deadline %>
+<% end %>
