@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107003556) do
+ActiveRecord::Schema.define(version: 20160107223004) do
 
   create_table "clients", force: :cascade do |t|
-    t.string   "razao_social"
+    t.string   "company_name"
     t.string   "cnpj"
-    t.string   "nome_contato"
-    t.string   "telefone"
+    t.string   "contact_name"
+    t.string   "phone"
     t.string   "email"
-    t.string   "logradouro"
-    t.integer  "numero"
-    t.string   "complemento"
-    t.string   "cep"
-    t.string   "bairro"
-    t.string   "cidade"
-    t.string   "uf"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "address"
+    t.integer  "address_number"
+    t.string   "aditional_address_detail"
+    t.string   "zipcode"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "contracts", force: :cascade do |t|
