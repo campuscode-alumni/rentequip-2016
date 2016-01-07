@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  resources :tools, only: [:index]
+  root 'home#index'
+  resources :contracts, only: [:show, :new, :create]
   resources :clients, only: [:create, :index, :show]
-
+  resources :tools, only: [:index]
 end
