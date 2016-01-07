@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20160107221547) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "term"
+    t.date     "initial_date"
+    t.date     "deadline"
+    t.float    "total_price"
+    t.string   "delivery_address"
+    t.string   "responsable"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "client_id"
+  end
+
+  add_index "contracts", ["client_id"], name: "index_contracts_on_client_id"
+
+  create_table "contracts_tools", force: :cascade do |t|
+    t.integer "contract_id"
+    t.integer "tool_id"
+  end
+
+  add_index "contracts_tools", ["contract_id"], name: "index_contracts_tools_on_contract_id"
+
   create_table "prices", force: :cascade do |t|
     t.decimal  "price"
     t.string   "tools_group"

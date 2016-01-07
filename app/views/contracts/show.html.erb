@@ -1,0 +1,12 @@
+<h2>Title</h2>
+<hr>
+<p><%= @client.razao_social %></p>
+<%= @tools.each do |tool| %>
+<p><%= tool.name %></p>
+<% end %>
+<p><%= @contract.term %></p>
+<p><%= @contract.initial_date %></p>
+<p><%= @contract.deadline %></p>
+<p><%= @contract.total_price %></p>
+<p><%= @contract.delivery_address %></p>
+<p><%= @contract.responsable %></p>
