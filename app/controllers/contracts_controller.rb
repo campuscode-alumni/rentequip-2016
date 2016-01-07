@@ -1,5 +1,8 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, :set_client, :set_tool, :set_collections, only: [:show]
+  before_action :set_contract, only: [:show]
+  before_action :set_client, only: [:show]
+  before_action :set_tool, only: [:show]
+  before_action :set_collections, only: [:show]
 
   def show
   end
