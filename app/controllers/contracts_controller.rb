@@ -2,9 +2,22 @@ class ContractsController < ApplicationController
   before_action :set_contract, only: [:show]
   before_action :set_client, only: [:show]
   before_action :set_tool, only: [:show]
-  before_action :set_collections, only: [:show]
+  before_action :set_collections, only: [:show, :new, :create]
 
   def show
+  end
+
+  def new
+    @contract = Contract.new
+  end
+
+  def create
+    @contract = Contract.new(contract_params)
+    if @contract.save
+      redirect_to @contract
+    else
+      render :new
+    end
   end
 
   private
@@ -27,8 +40,9 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
+    binding.pry
     params.require(:contract)
-      .permit(:client, :tool, :term, :initial_date, :deadline, :total_price,
-              :delivery_address, :responsable)
+      .permit(:client_id, :term, :initial_date, :deadline, :total_price,
+              :delivery_address, :responsable, tool_ids:[])
   end
 end
