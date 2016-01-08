@@ -2,11 +2,7 @@ require 'rails_helper'
 
 feature 'Show contract' do
   scenario 'successfully' do
-    client = Client.create(company_name: 'Campus Code',
-                           cnpj: '26.286.134/0001-04',
-                           contact_name: 'Gustavo',
-                           phone: '555-555',
-                           email: 'g@code.com')
+    client = create(:client)
 
     tool = Tool.create(name: 'Furadeira Blackdecker',
                        description: 'Furadeira de alta rotação',
