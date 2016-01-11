@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Create a new Contract' do
-  scenario 'successfully' do
+feature 'Try to create a contract' do
+  scenario 'unsuccessfully' do
     client = create(:client)
 
     tool = Tool.create(name: 'Furadeira Blackdecker',
@@ -22,19 +22,10 @@ feature 'Create a new Contract' do
     fill_in 'contract[deadline]', with: deadline
     fill_in 'contract[total_price]', with: 30.00
     fill_in 'contract[delivery_address]', with: 'Alameda Santos, 1293'
-    fill_in 'contract[responsable]', with: 'Alan'
+    fill_in 'contract[responsable]', with: ''
 
     click_on 'Emitir Contrato'
 
-    contract = Contract.last
-
-    expect(page).to have_content client.company_name
-    expect(page).to have_content tool.name
-    expect(page).to have_content contract.term
-    expect(page).to have_content contract.initial_date
-    expect(page).to have_content contract.deadline
-    expect(page).to have_content contract.total_price
-    expect(page).to have_content contract.delivery_address
-    expect(page).to have_content contract.responsable
+    expect(page).to have_content "Responsable can't be blank"
   end
 end

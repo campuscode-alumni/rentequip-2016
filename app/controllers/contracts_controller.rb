@@ -40,9 +40,8 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-    binding.pry
     params.require(:contract)
       .permit(:client_id, :term, :initial_date, :deadline, :total_price,
-              :delivery_address, :responsable, tool_ids:[])
+              :delivery_address, :responsable, tool_ids: [])
   end
 end
