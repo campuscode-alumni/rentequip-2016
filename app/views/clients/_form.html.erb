@@ -1,15 +1,15 @@
 <%= simple_form_for @client do |f| %>
-  <%= f.input :company_name %>
-  <%= f.input :cnpj %>
-  <%= f.input :contact_name %>
-  <%= f.input :phone %>
-  <%= f.input :email %>
-  <%= f.input :address %>
-  <%= f.input :address_number, as: :string %>
-  <%= f.input :aditional_address_detail %>
-  <%= f.input :zipcode %>
-  <%= f.input :neighborhood %>
-  <%= f.input :city %>
-  <%= f.input :state %>
+  <%= f.input :company_name, label: 'Razão Social' %>
+  <%= f.input :cnpj, label: 'CNPJ' %>
+  <%= f.input :contact_name, label: 'Nome do contato' %>
+  <%= f.input :phone, label: 'Telefone' %>
+  <%= f.input :email, label: 'E-mail' %>
+  <%= f.input :address, label: 'Logradouro' %>
+  <%= f.input :address_number, label: 'Número', as: :string %>
+  <%= f.input :aditional_address_detail, label: 'Complemento' %>
+  <%= f.input :zipcode, label: 'CEP'%>
+  <%= f.input :neighborhood, label: 'Bairro'%>
+  <%= f.input :city, label: 'Cidade'%>
+  <%= f.input :state, label: 'Estado'%>
   <%= f.submit submit_text %>
 <% end  %>

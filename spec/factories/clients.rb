@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  sequence(:cnpj) { |n| "26.286.134/0001-0#{n}" }
+  sequence(:cnpj) { |n| "26.286.134/#{'%04d' % n}-00" }
   factory :client do
     company_name 'Campus Code'
     cnpj
