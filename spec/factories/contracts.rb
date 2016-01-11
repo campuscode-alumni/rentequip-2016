@@ -1,12 +1,11 @@
 FactoryGirl.define do
   factory :contract do
-    client 'MyString'
-    equipment 'MyString'
-    term 1
-    initial_date '2016-01-06'
-    deadline '2016-01-06'
-    total_price 1.5
-    delivery_address 'MyString'
-    responsable 'MyString'
+    client
+    term 15
+    initial_date Time.zone.now
+    deadline 15.days.from_now
+    total_price 30.00
+    delivery_address 'Alameda Santos, 1293'
+    responsable 'Alan'
   end
 end
