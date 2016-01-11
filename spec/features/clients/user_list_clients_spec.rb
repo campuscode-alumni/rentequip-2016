@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User list all clients' do
   scenario 'successfully' do
-    create(:client)
+    create_list :client, 3
 
     visit clients_path
 

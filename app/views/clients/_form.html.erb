@@ -1,0 +1,15 @@
+<%= simple_form_for @client do |f| %>
+  <%= f.input :company_name %>
+  <%= f.input :cnpj %>
+  <%= f.input :contact_name %>
+  <%= f.input :phone %>
+  <%= f.input :email %>
+  <%= f.input :address %>
+  <%= f.input :address_number, as: :string %>
+  <%= f.input :aditional_address_detail %>
+  <%= f.input :zipcode %>
+  <%= f.input :neighborhood %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.submit submit_text %>
+<% end  %>

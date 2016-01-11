@@ -6,29 +6,29 @@ feature 'User visit client detail' do
 
     visit client_path client
 
-    expect(page).to have_content('Campus Code')
-    expect(page).to have_content('26.286.134/0001-04')
-    expect(page).to have_content('Alameda Santos')
+    expect(page).to have_content(client.company_name)
+    expect(page).to have_content(client.cnpj)
+    expect(page).to have_content(client.address)
   end
 
   scenario 'from clients list' do
-    create(:client)
+    client = create(:client)
 
     visit clients_path
 
     click_on 'Campus Code'
 
-    expect(page).to have_content('Campus Code')
-    expect(page).to have_content('26.286.134/0001-04')
-    expect(page).to have_content('Alameda Santos')
-    expect(page).to have_content('1293')
-    expect(page).to have_content('conj 73')
-    expect(page).to have_content('12345-789')
-    expect(page).to have_content('Cerqueira Cesar')
-    expect(page).to have_content('São Paulo')
-    expect(page).to have_content('SP')
-    expect(page).to have_content('Gustavo')
-    expect(page).to have_content('555-555')
-    expect(page).to have_content('g@code.com')
+    expect(page).to have_content(client.company_name)
+    expect(page).to have_content(client.cnpj)
+    expect(page).to have_content(client.contact_name)
+    expect(page).to have_content(client.phone)
+    expect(page).to have_content(client.email)
+    expect(page).to have_content(client.address)
+    expect(page).to have_content(client.address_number)
+    expect(page).to have_content(client.aditional_address_detail)
+    expect(page).to have_content(client.zipcode)
+    expect(page).to have_content(client.neighborhood)
+    expect(page).to have_content(client.city)
+    expect(page).to have_content(client.state)
   end
 end
