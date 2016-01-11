@@ -1,13 +1,20 @@
-<div class="row">
-  <%= simple_form_for @contract do |f| %>
-  <%= f.association :client, label_method: :company_name, value_method: :id %>
-  <%= f.association :tools %>
-  <%= f.input :term, error: "Term can't be blank" %>
-  <%= f.input :initial_date, as: :date, html5: true, error: "Initial Date can't be blank" %>
-  <%= f.input :deadline, as: :date, html5: true, error: "Deadline can't be blank" %>
-  <%= f.input :total_price, error: "Total price can't be blank" %>
-  <%= f.input :delivery_address, error: "Delivery Address can't be blank" %>
-  <%= f.input :responsable, error: "Responsable can't be blank" %>
-  <%= f.button :submit, 'Emitir Contrato', class:"btn btn-primary"  %>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-title">
+    <h1>Contract Teste</h1>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <%= simple_form_for @contract do |f| %>
+      <%= f.association :client, label_method: :company_name, value_method: :id %>
+      <%= f.association :tools %>
+      <%= f.input :term, placeholder: 'Insert contract term here', error: "Term can't be blank" %>
+      <%= f.input :initial_date, as: :date, html5: true, error: "Initial Date can't be blank" %>
+      <%= f.input :deadline, as: :date, html5: true, error: "Deadline can't be blank" %>
+      <%= f.input :total_price, error: "Total price can't be blank" %>
+      <%= f.input :delivery_address, placeholder: "Insert delivery address here", error: "Delivery Address can't be blank" %>
+      <%= f.input :responsable, error: "Responsable can't be blank" %>
+      <%= f.button :submit, 'Emitir Contrato', class:"btn btn-primary"  %>
+      <% end %>
+  </div>
+  </div>
 </div>
