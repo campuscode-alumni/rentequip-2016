@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Rentequip</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
 
-<%= yield %>
+<head>
+  <title>Rent Equip</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <h1 class="text-right">Teste</h1>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
+
 </html>
