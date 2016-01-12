@@ -1,0 +1,5 @@
+<span class="error_message"><%= flash[:warning] %></span>
+<%= simple_form_for @toolsgroup do |f|%>
+  <%= f.input :name,  placeholder: 'Insert group name here' %>
+  <%= f.submit 'Salvar' %>
+<% end %>

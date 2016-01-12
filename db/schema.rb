@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107223004) do
+ActiveRecord::Schema.define(version: 20160108005309) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "company_name"
@@ -62,11 +62,19 @@ ActiveRecord::Schema.define(version: 20160107223004) do
   create_table "tools", force: :cascade do |t|
     t.text     "description"
     t.string   "serial_number"
-    t.string   "tools_group"
     t.string   "status"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
+    t.integer  "tools_group_id"
+  end
+
+  add_index "tools", ["tools_group_id"], name: "index_tools_on_tools_group_id"
+
+  create_table "tools_groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

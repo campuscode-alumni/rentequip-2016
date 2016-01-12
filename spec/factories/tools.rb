@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :tool do
-    description 'MyText'
-    serial_number 'MyString'
-    tools_group 'MyString'
-    status 'MyString'
+    name 'Furadeira Blackdecker'
+    description 'Furadeira de ala rotação'
+    serial_number 'SEA007'
+    tools_group
+    status 'Ativo'
   end
 end
