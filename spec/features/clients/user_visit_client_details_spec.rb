@@ -16,7 +16,7 @@ feature 'User visit client detail' do
 
     visit clients_path
 
-    click_on 'Campus Code'
+    click_on client.company_name
 
     expect(page).to have_content(client.company_name)
     expect(page).to have_content(client.cnpj)

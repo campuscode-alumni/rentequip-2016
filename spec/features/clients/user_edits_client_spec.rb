@@ -27,7 +27,7 @@ feature 'User edits a client' do
 
     click_on 'Atualizar Cliente'
 
-    ['Company name', 'Cnpj', 'Address'].each do |field|
+    ['Razão Social', 'CNPJ', 'Logradouro'].each do |field|
       expect(page).to have_content "#{field}can\'t be blank"
     end
   end
