@@ -1,14 +1,14 @@
-<h2>Title</h2>
-<hr>
 <div class="row">
-  <% @clients.each do |client| %>
+  <div class="col-md-8">
+    <% @clients.each do |client| %>
     <p><%= client.company_name %></p>
-  <% end %>
-  <% @tools.each do |tool| %>
+    <% end %>
+    <% @tools.each do |tool| %>
     <p><%= tool.name %></p>
-  <% end %>
-  <% @contracts.each do |contract| %>
+    <% end %>
+    <% @contracts.each do |contract| %>
     <p><%= contract.deadline %></p>
     <%= link_to 'Ver mais', contract %>
-  <% end %>
+    <% end %>
+  </div>
 </div>
