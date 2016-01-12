@@ -1,8 +1,8 @@
 class ChangeColumnsClients < ActiveRecord::Migration
   def change
-    rename_column :clients, :razao_social, :company_name
-    rename_column :clients, :nome_contato, :contact_name
-    rename_column :clients, :telefone, :phone
+    rename_column :clients, :company_name, :company_name
+    rename_column :clients, :contact_name, :contact_name
+    rename_column :clients, :phone, :phone
     rename_column :clients, :logradouro, :address
     rename_column :clients, :numero, :address_number
     rename_column :clients, :complemento, :aditional_address_detail

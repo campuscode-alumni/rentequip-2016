@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Show contract' do
+feature 'List contracts' do
   scenario 'successfully' do
     client = create(:client)
 
@@ -15,7 +15,14 @@ feature 'Show contract' do
                                delivery_address: 'Alameda Santos, 1293',
                                responsable: 'Alan')
 
-    visit contract_path contract
+    visit root_path
+
+    expect(page).to have_content client.company_name
+    expect(page).to have_content tool.name
+    expect(page).to have_content contract.deadline
+    expect(page).to have_content 'Ver mais'
+
+    click_on 'Ver mais'
 
     expect(page).to have_content client.company_name
     expect(page).to have_content tool.name

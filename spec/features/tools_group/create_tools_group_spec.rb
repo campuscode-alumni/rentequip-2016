@@ -15,5 +15,4 @@ feature 'User create a new tools group' do
     click_on 'Salvar'
     expect(page).to have_content('Warning! All fields are mandatory.')
   end
-
 end
