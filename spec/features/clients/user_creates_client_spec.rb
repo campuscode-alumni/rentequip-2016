@@ -28,9 +28,9 @@ feature 'User creates a new client' do
 
     click_on 'Criar Cliente'
 
-    ['Company name', 'Cnpj', 'Contact name', 'Phone', 'Email',
-     'Address', 'Address number', 'Aditional address detail',
-     'Zipcode', 'Neighborhood', 'City', 'State'].each do |field|
+    ['Razão Social', 'CNPJ', 'Nome do contato', 'Telefone', 'E-mail',
+     'Logradouro', 'Número', 'Complemento',
+     'CEP', 'Bairro', 'Cidade', 'Estado'].each do |field|
       expect(page).to have_content "#{field}can\'t be blank"
     end
   end
