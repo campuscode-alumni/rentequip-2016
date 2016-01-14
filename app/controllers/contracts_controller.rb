@@ -13,6 +13,7 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
+    @contract.set_deadline
     if @contract.save
       redirect_to @contract
     else
@@ -41,7 +42,7 @@ class ContractsController < ApplicationController
 
   def contract_params
     params.require(:contract)
-      .permit(:client_id, :term, :initial_date, :deadline, :total_price,
+      .permit(:client_id, :term, :initial_date, :total_price,
               :delivery_address, :responsable, tool_ids: [])
   end
 end

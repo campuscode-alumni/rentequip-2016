@@ -1,10 +1,9 @@
 <div class="row">
   <%= simple_form_for @contract do |f| %>
-  <%= f.association :client, label: "Cliente", label_method: :company_name, value_method: :id %>
-  <%= f.association :tools, label: "Equipamento(s)" %>
+  <%= f.association :client, label: "Cliente", label_method: lambda { |client| "#{client.company_name} #{client.state}".html_safe }, value_method: :id %>
+  <%= f.association :tools, label: "Equipamento(s)", label_method: lambda { |tool| "#{tool.serial_number} #{tool.name}".html_safe } %>
   <%= f.input :term, label: "Prazo", error: "Campo obrigatório" %>
-  <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, error: "Campo obrigatório" %>
-  <%= f.input :deadline, label: "Data final", as: :date, html5: true, error: "Campo obrigatório" %>
+  <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, error: "Campo obrigatório", input_html: { value: Time.zone.now.strftime('%d/%m/%Y') }%>
   <%= f.input :total_price, label: "Preço do contrato", error: "Campo obrigatório" %>
   <%= f.input :delivery_address, label: "Endereço de entrega", error: "Campo obrigatório" %>
   <%= f.input :responsable, label: "Responsável", error: "Campo obrigatório" %>
