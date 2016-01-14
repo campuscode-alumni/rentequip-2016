@@ -22,6 +22,6 @@ feature 'Try to create a contract' do
 
     click_on 'Emitir Contrato'
 
-    expect(page).to have_content "Responsable can't be blank"
+    expect(page).to have_content 'Campo obrigatório'
   end
 end

@@ -1,13 +1,13 @@
 <div class="row">
   <%= simple_form_for @contract do |f| %>
-  <%= f.association :client, label_method: :company_name, value_method: :id %>
-  <%= f.association :tools %>
-  <%= f.input :term, error: "Term can't be blank" %>
-  <%= f.input :initial_date, as: :date, html5: true, error: "Initial Date can't be blank" %>
-  <%= f.input :deadline, as: :date, html5: true, error: "Deadline can't be blank" %>
-  <%= f.input :total_price, error: "Total price can't be blank" %>
-  <%= f.input :delivery_address, error: "Delivery Address can't be blank" %>
-  <%= f.input :responsable, error: "Responsable can't be blank" %>
+  <%= f.association :client, label: "Cliente", label_method: :company_name, value_method: :id %>
+  <%= f.association :tools, label: "Equipamento(s)" %>
+  <%= f.input :term, label: "Prazo", error: "Campo obrigatório" %>
+  <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, error: "Campo obrigatório" %>
+  <%= f.input :deadline, label: "Data final", as: :date, html5: true, error: "Campo obrigatório" %>
+  <%= f.input :total_price, label: "Preço do contrato", error: "Campo obrigatório" %>
+  <%= f.input :delivery_address, label: "Endereço de entrega", error: "Campo obrigatório" %>
+  <%= f.input :responsable, label: "Responsável", error: "Campo obrigatório" %>
   <%= f.button :submit, 'Emitir Contrato', class:"btn btn-primary"  %>
   <% end %>
 </div>

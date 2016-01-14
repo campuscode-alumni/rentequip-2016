@@ -2,11 +2,13 @@ require 'rails_helper'
 
 feature 'User list all clients' do
   scenario 'successfully' do
-    create(:client)
+    clients = create_list :client, 3
 
     visit clients_path
 
-    expect(page).to have_content('Campus Code')
-    expect(page).to have_content('26.286.134/0001-04')
+    clients.each do |client|
+      expect(page).to have_content(client.company_name)
+      expect(page).to have_content(client.cnpj)
+    end
   end
 end
