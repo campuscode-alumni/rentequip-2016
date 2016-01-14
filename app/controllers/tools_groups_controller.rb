@@ -1,6 +1,11 @@
 class ToolsGroupsController < ApplicationController
+before_action :set_tools, only: [:edit, :update, :show]
+
   def index
     @toolsgroup = ToolsGroup.all
+  end
+
+  def edit
   end
 
   def new
@@ -8,7 +13,6 @@ class ToolsGroupsController < ApplicationController
   end
 
   def show
-    @toolsgroup = ToolsGroup.find(params[:id])
   end
 
   def create
@@ -16,8 +20,17 @@ class ToolsGroupsController < ApplicationController
     if @toolsgroup.save
       redirect_to @toolsgroup
     else
-      flash[:warning] = 'Warning! All fields are mandatory.'
+      flash[:warning] = 'Atenção! Todos os campos são obrigatórios.'
       render :new
+    end
+  end
+
+  def update
+    if @toolsgroup.update(tools_params)
+      redirect_to @toolsgroup
+    else
+      flash[:warning] = 'Atenção! Todos os campos são obrigatórios.'
+      render :edit
     end
   end
 
@@ -25,5 +38,9 @@ class ToolsGroupsController < ApplicationController
 
   def tools_params
     params.require(:tools_group).permit(:name)
+  end
+
+  def set_tools
+    @toolsgroup = ToolsGroup.find(params[:id])
   end
 end

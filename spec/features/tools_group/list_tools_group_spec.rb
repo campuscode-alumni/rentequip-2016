@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Tools group list tools' do
+feature 'User list Tools group' do
   scenario 'sucessfully' do
     toolsgroup = create(:tools_group)
 

@@ -13,6 +13,6 @@ feature 'User create a new tools group' do
     visit new_tools_group_path
 
     click_on 'Salvar'
-    expect(page).to have_content('Warning! All fields are mandatory.')
+    expect(page).to have_content('Atenção! Todos os campos são obrigatórios.')
   end
 end
