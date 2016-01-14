@@ -1,5 +1,5 @@
-<p><%= @client.company_name %></p>
-<% @tools.each do |tool| %>
+<p><%= @contract.client.company_name %></p>
+<% @contract.tools.each do |tool| %>
 <p><%= tool.name %></p>
 <% end %>
 <p><%= @contract.term %></p>
