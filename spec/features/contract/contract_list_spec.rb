@@ -13,8 +13,8 @@ feature 'List contracts' do
     contract = Contract.create(client: client,
                                tools: [tool],
                                term: 15,
-                               initial_date: Time.zone.now,
-                               deadline: 15.days.from_now,
+                               initial_date: Time.zone.now.strftime('%d/%m/%Y'),
+                               deadline: 15.days.from_now.strftime('%d/%m/%Y'),
                                total_price: 30.00,
                                delivery_address: 'Alameda Santos, 1293',
                                responsable: 'Alan')
@@ -23,7 +23,7 @@ feature 'List contracts' do
 
     expect(page).to have_content client.company_name
     expect(page).to have_content tool.name
-    expect(page).to have_content contract.deadline
+    expect(page).to have_content contract.deadline.strftime('%d/%m/%Y')
     expect(page).to have_content 'Ver mais'
 
     click_on 'Ver mais'

@@ -24,7 +24,9 @@ feature 'Create a new Contract' do
     fill_in 'contract[delivery_address]', with: 'Alameda Santos, 1293'
     fill_in 'contract[responsable]', with: 'Alan'
 
-    click_on 'Emitir Contrato'
+    within('form') do
+      click_on 'Emitir Contrato'
+    end
 
     contract = Contract.last
 
