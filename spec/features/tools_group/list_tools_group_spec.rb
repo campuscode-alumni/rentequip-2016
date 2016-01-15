@@ -7,5 +7,6 @@ feature 'User list Tools group' do
     visit tools_groups_path
 
     expect(page).to have_content(toolsgroup.name)
+    expect(page).to have_content(toolsgroup.description)
   end
 end

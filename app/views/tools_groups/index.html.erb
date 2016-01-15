@@ -1,3 +1,24 @@
-<% @toolsgroup.each do |group|%>
-  <%= group.name %>
-<% end %>
+<div class="row">
+  <div class="col-md-10 col-sm-10">
+      <h3>Grupos</h3>
+  </div>
+  <div class="col-md-2 col-sm-2">
+    <h3><%= link_to 'Novo', new_tools_group_path,class: "btn btn-success pull-right" %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <table class = 'table table-striped'>
+      <tr>
+        <th> Nome </th>
+        <th> Descrição </th>
+      </tr>
+      <% @toolsgroup.each do |group|%>
+      <tr>
+        <td><%= link_to group.name, group %></td>
+        <td><%= link_to group.description, group %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

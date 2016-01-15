@@ -1,5 +1,5 @@
 class ToolsGroupsController < ApplicationController
-before_action :set_tools, only: [:edit, :update, :show]
+  before_action :set_tools, only: [:edit, :update, :show]
 
   def index
     @toolsgroup = ToolsGroup.all
@@ -37,7 +37,7 @@ before_action :set_tools, only: [:edit, :update, :show]
   private
 
   def tools_params
-    params.require(:tools_group).permit(:name)
+    params.require(:tools_group).permit(:name, :description)
   end
 
   def set_tools

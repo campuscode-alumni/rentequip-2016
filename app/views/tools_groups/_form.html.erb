@@ -1,5 +1,7 @@
 <span class="error_message"><%= flash[:warning] %></span>
 <%= simple_form_for @toolsgroup do |f|%>
-  <%= f.input :name,  placeholder: 'Insira o nome do grupo aqui.' %>
-  <%= f.submit submit_btn %>
+  <%= f.input :name, error: 'O campo não pode estar vazio', placeholder: 'Insira o nome do grupo aqui.' %>
+  <%= f.input :description, placeholder: 'Insira a descrição referente do grupo de equipamentos.' %>
+  <%= f.button :submit, submit_btn, class: "btn-primary" %>
+  <%= link_to 'Voltar', tools_groups_path,class: "btn btn-danger" %>
 <% end %>
