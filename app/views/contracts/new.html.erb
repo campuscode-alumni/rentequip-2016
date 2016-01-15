@@ -1,6 +1,6 @@
 <div class="row">
   <%= simple_form_for @contract do |f| %>
-  <%= f.association :client, label: "Cliente", label_method: lambda { |client| "#{client.company_name} #{client.state}".html_safe }, value_method: :id %>
+  <%= f.association :client, label: "Cliente", label_method: lambda { |client| "#{client.company_name} #{client.state}".html_safe }, value_method: :id, class: "col-md-12 col-sm-12" %>
   <%= f.association :tools, label: "Equipamento(s)", label_method: lambda { |tool| "#{tool.serial_number} #{tool.name}".html_safe } %>
   <%= f.input :term, label: "Prazo", error: "Campo obrigatório" %>
   <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, error: "Campo obrigatório", input_html: { value: Time.zone.now.strftime('%d/%m/%Y') }%>

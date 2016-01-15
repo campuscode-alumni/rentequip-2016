@@ -28,9 +28,9 @@ feature 'Create a new Contract' do
     expect(page).to have_content client.company_name
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
-    expect(page).to have_content contract.initial_date
-    expect(page).to have_content contract.deadline
-    expect(page).to have_content contract.total_price
+    expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
+    expect(page).to have_content contract.deadline.strftime('%d/%m/%Y')
+    expect(page).to have_content 'R$ 30,00'
     expect(page).to have_content contract.delivery_address
     expect(page).to have_content contract.responsable
   end
