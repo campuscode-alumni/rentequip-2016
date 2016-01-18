@@ -14,7 +14,7 @@ feature 'Try to create a contract' do
 
     today = Time.zone.now
 
-    select client.company_name, from: 'contract[client_id]'
+    select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
     select tool.name, from: 'contract[tool_ids][]'
     fill_in 'contract[term]', with: 15
     fill_in 'contract[initial_date]', with: today

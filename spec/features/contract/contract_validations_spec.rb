@@ -10,7 +10,7 @@ feature 'Show contract' do
 
     visit contract_path contract
 
-    expect(page).to have_content client.company_name
+    expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
     expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
