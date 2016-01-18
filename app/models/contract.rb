@@ -5,11 +5,7 @@ class Contract < ActiveRecord::Base
             :delivery_address, :responsable, presence: true
 
   def print_tools
-    tools_list = ''
-    tools.each do |tool|
-      tools_list << tool.name
-    end
-    tools_list
+    tools.map(&:name).join(', ')
   end
 
   def format_date(date)
