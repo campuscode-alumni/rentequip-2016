@@ -24,9 +24,8 @@ feature 'List contracts' do
     expect(page).to have_content client.company_name
     expect(page).to have_content tool.name
     expect(page).to have_content contract.deadline.strftime('%d/%m/%Y')
-    expect(page).to have_content 'Ver mais'
 
-    click_on 'Ver mais'
+    click_on '2016001'
 
     expect(page).to have_content client.company_name
     expect(page).to have_content tool.name

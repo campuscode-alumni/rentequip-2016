@@ -2,7 +2,7 @@ require 'rails_helper'
 
 Capybara.exact = true
 
-feature 'get contract dates in brazilian format' do
+feature 'List Contracts at index' do
   scenario 'successfully' do
     contract = build(:contract)
     tools = create_list(:tool, 3)
@@ -17,9 +17,9 @@ feature 'get contract dates in brazilian format' do
 
     within('#contratos') do
       expect(page).to have_content 'Furadeira'
-      expect(page).to have_content '29/01/2016'
+      expect(page).to have_content contract.format_date(contract.deadline)
       expect(page).to have_content '3'
-      expect(page).to have_content '30.0'
+      expect(page).to have_content 'R$ 3.000,00'
       expect(page).to have_content '2016001'
     end
   end
