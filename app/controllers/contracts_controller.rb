@@ -11,7 +11,6 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
-    @contract.set_deadline
     if @contract.save
       redirect_to @contract
     else
