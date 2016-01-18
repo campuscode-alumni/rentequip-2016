@@ -6,28 +6,27 @@ feature 'User edits a client' do
 
     visit edit_client_path client
 
-    fill_in 'client[company_name]',   with: 'Locaweb'
-    fill_in 'client[cnpj]',           with: '26.333.134/1234-04'
-    fill_in 'client[address]',        with: 'rua sei la'
+    fill_in 'client[fantasy_name]',   with: client.fantasy_name
+    fill_in 'client[cnpj]',           with: client.cnpj
+    fill_in 'client[address]',        with: client.address
 
     click_on 'Atualizar Cliente'
 
-    expect(page).to have_content('Locaweb')
-    expect(page).to have_content('26.333.134/1234-04')
-    expect(page).to have_content('rua sei la')
+    expect(page).to have_content(client.fantasy_name)
+    expect(page).to have_content(client.cnpj)
+    expect(page).to have_content(client.address)
   end
 
   scenario 'invalid data' do
     client = create(:client)
     visit edit_client_path client
 
-    fill_in 'client[company_name]',   with: ''
+    fill_in 'client[fantasy_name]',   with: ''
     fill_in 'client[cnpj]',           with: ''
     fill_in 'client[address]',        with: ''
 
     click_on 'Atualizar Cliente'
-
-    ['Razão Social', 'CNPJ', 'Logradouro'].each do |field|
+    ['Nome Fantasia', 'CNPJ', 'Logradouro'].each do |field|
       expect(page).to have_content "#{field}can\'t be blank"
     end
   end

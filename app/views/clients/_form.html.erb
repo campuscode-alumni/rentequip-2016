@@ -1,5 +1,6 @@
 <%= simple_form_for @client do |f| %>
   <%= f.input :company_name, label: 'Razão Social' %>
+  <%= f.input :fantasy_name, label: 'Nome Fantasia' %>
   <%= f.input :cnpj, label: 'CNPJ' %>
   <%= f.input :contact_name, label: 'Nome do contato' %>
   <%= f.input :phone, label: 'Telefone' %>
@@ -11,5 +12,5 @@
   <%= f.input :neighborhood, label: 'Bairro'%>
   <%= f.input :city, label: 'Cidade'%>
   <%= f.input :state, label: 'Estado'%>
-  <%= f.submit submit_text %>
+  <%= f.button :submit, submit_text, class:"btn btn-primary"  %>
 <% end  %>

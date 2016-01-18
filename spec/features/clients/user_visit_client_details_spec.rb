@@ -6,7 +6,7 @@ feature 'User visit client detail' do
 
     visit client_path client
 
-    expect(page).to have_content(client.company_name)
+    expect(page).to have_content(client.fantasy_name)
     expect(page).to have_content(client.cnpj)
     expect(page).to have_content(client.address)
   end
@@ -16,9 +16,10 @@ feature 'User visit client detail' do
 
     visit clients_path
 
-    click_on client.company_name
+    click_on client.fantasy_name
 
     expect(page).to have_content(client.company_name)
+    expect(page).to have_content(client.fantasy_name)
     expect(page).to have_content(client.cnpj)
     expect(page).to have_content(client.contact_name)
     expect(page).to have_content(client.phone)
