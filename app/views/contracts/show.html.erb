@@ -1,10 +1,25 @@
-<p><%= @client.company_name %></p>
-<% @tools.each do |tool| %>
-<p><%= tool.name %></p>
-<% end %>
-<p><%= @contract.term %></p>
-<p><%= @contract.initial_date %></p>
-<p><%= @contract.deadline %></p>
-<p><%= @contract.total_price %></p>
-<p><%= @contract.delivery_address %></p>
-<p><%= @contract.responsable %></p>
+<div class="page-header">
+  <h1>Contrato <%= @contract.id %></h1>
+  <!-- TODO: alterar para numero do contrato quando criar o campo -->
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Empresa</dt>
+  <dd><%= "#{@contract.client.company_name} #{@contract.client.state}"%></dd>
+  <dt>Ferramentas</dt>
+  <% @contract.tools.each do |tool| %>
+    <dd><%= "#{tool.serial_number} #{tool.name}" %></dd>
+  <% end %>
+  <dt>Prazo</dt>
+  <dd><%= @contract.term %></dd>
+  <dt>Data Inicial</dt>
+  <dd><%= @contract.initial_date.strftime("%d/%m/%Y") %></dd>
+  <dt>Data Final</dt>
+  <dd><%= @contract.deadline.strftime("%d/%m/%Y") %></dd>
+  <dt>Total</dt>
+  <dd><%= number_to_currency(@contract.total_price, unit: "R$ ", separator: ",", delimiter: ".") %></dd>
+  <dt>Endereço de Entrega</dt>
+  <dd><%= @contract.delivery_address %></dd>
+  <dt>Responsável</dt>
+  <dd><%= @contract.responsable %></dd>
+</dl>

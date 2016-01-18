@@ -15,4 +15,8 @@ class Contract < ActiveRecord::Base
   def format_date(date)
     date.strftime('%d/%m/%Y')
   end
+
+  def set_deadline
+    self.deadline = initial_date + term.days
+  end
 end

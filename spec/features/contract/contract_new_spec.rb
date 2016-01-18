@@ -13,14 +13,12 @@ feature 'Try to create a contract' do
     visit new_contract_path
 
     today = Time.zone.now
-    deadline = 15.days.from_now
 
-    select client.company_name, from: 'contract[client_id]'
-    select tool.name, from: 'contract[tool_ids][]'
+    select "#{client.company_name} #{client.state}", from: 'contract[client_id]'
+    select "#{tool.serial_number} #{tool.name}", from: 'contract[tool_ids][]'
     fill_in 'contract[term]', with: 15
     fill_in 'contract[initial_date]', with: today
-    fill_in 'contract[deadline]', with: deadline
-    fill_in 'contract[total_price]', with: 30.00
+    fill_in 'contract[total_price]', with: 3000.00
     fill_in 'contract[delivery_address]', with: 'Alameda Santos, 1293'
     fill_in 'contract[responsable]', with: ''
 

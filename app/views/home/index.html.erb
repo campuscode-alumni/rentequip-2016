@@ -21,7 +21,7 @@
             <td class="text-center"><%= contract.print_tools %></td>
             <td class="text-center"><%= contract.tools.count %></td>
             <td class="text-center"><%= contract.format_date(contract.deadline) %></td>
-            <td class="text-center"><%= number_to_currency(contract.total_price, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+            <td class="text-center"><%= number_to_currency(contract.total_price, unit: "R$ ", delimiter: ".", separator: ",") %></td>
           </tr>
           <% end %>
         </tbody>
