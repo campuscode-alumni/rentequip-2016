@@ -15,6 +15,6 @@ feature 'User create a new tools group' do
     visit new_tools_group_path
 
     click_on 'Salvar'
-    expect(page).to have_content 'Atenção! O campo nome é obrigatório.'
+    expect(page).to have_content 'Não foi possível salvar grupo de ferramentas'
   end
 end
