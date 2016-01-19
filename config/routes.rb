@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :clients, only: [:create, :index, :show, :new, :edit, :update]
   resources :tools, only: [:index]
   resources :prices, only: [:index]
-  resources :tools_groups, only: [:index, :new, :show, :create, :update, :edit]
+  resources :tools_groups
 end
