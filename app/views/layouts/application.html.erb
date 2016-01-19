@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Rent Equip</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+
+  <head>
+    <title>Rent Equip</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
   <body>
     <div class="container">
       <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -13,6 +15,17 @@
           <div class="navbar-header">
             <%= link_to "Rent Equip", root_path, {class:"navbar-brand"} %>
           </div>
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to "Emitir Contrato", new_contract_path %>
+            </li>
+            <li>
+              <%= link_to "Clientes", clients_path %>
+            </li>
+            <li>
+              <%= link_to "Equipamentos", tools_path %>
+            </li>
+          </ul>
         </div>
       </nav>
       <%= yield %>

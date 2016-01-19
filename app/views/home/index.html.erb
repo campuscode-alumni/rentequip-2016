@@ -1,14 +1,31 @@
 <div class="row">
-  <div class="col-md-8">
-    <% @clients.each do |client| %>
-    <p><%= client.company_name %></p>
-    <% end %>
-    <% @tools.each do |tool| %>
-    <p><%= tool.name %></p>
-    <% end %>
-    <% @contracts.each do |contract| %>
-    <p><%= contract.deadline %></p>
-    <%= link_to 'Ver mais', contract %>
-    <% end %>
+  <div class="col-md-12 col-sm-12">
+    <div class="container">
+      <h3>Lista de Contratos</h3>
+      <table id="contratos" class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Número de Contrato</th>
+            <th>Dono do contrato</th>
+            <th>Ferramentas</th>
+            <th>Quantidade de Ferramentas</th>
+            <th>Expiração do Contrato</th>
+            <th>Valor do Contrato</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contracts.each do |contract| %>
+          <tr>
+            <td class="text-center"><%= link_to '2016001', contract %></td>
+            <td class="text-center"><%= "#{contract.client.fantasy_name} #{contract.client.state}" %></td>
+            <td class="text-center"><%= contract.print_tools %></td>
+            <td class="text-center"><%= contract.tools.count %></td>
+            <td class="text-center"><%= contract.format_date(contract.deadline) %></td>
+            <td class="text-center"><%= number_to_currency(contract.total_price, unit: "R$ ", delimiter: ".", separator: ",") %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

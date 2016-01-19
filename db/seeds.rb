@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 client = Client.create!(company_name:'Campus Code',
+                        fantasy_name: 'Campus Code',
                         cnpj:'26.286.134/0001-04',
                         contact_name:'Gustavo',
                         phone:'555-555',
@@ -23,15 +24,15 @@ tools_group = ToolsGroup.create!([{name: 'Furadeiras', description: 'Objetos fur
                                   {name: 'Parafusadeiras', description: 'Objetos parafusantes de parafusos parafusados'}])
 
 tool = Tool.create!(name: 'Furadeira',
-                    description: 'Furadeira Black Decker...',
+                    description: 'Furadeira Black&Decker...',
                     serial_number: '123456',
-                    tools_group_id: tools_group.first,
+                    tools_group: tools_group.first,
                     status: 'Ativo')
 
 contract = Contract.create!(term: 15,
                             initial_date: Time.zone.now,
                             deadline: 15.days.from_now,
-                            total_price: 30.00,
+                            total_price: 3000.00,
                             delivery_address: 'Alameda Santos, 1293',
                             responsable: 'Alan',
                             client: client,

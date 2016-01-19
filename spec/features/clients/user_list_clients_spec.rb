@@ -7,7 +7,7 @@ feature 'User list all clients' do
     visit clients_path
 
     clients.each do |client|
-      expect(page).to have_content(client.company_name)
+      expect(page).to have_content(client.fantasy_name)
       expect(page).to have_content(client.cnpj)
     end
   end
