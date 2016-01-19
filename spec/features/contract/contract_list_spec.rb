@@ -5,6 +5,7 @@ feature 'List contracts' do
     client = create(:client)
 
     tool = create(:tool)
+
     contract = build(:contract)
     contract.tools << tool
     contract.save

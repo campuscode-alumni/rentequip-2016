@@ -20,10 +20,13 @@ client = Client.create!(company_name:'Campus Code',
                         city:'São Paulo',
                         state:'SP')
 
+tools_group = ToolsGroup.create!([{name: 'Furadeiras', description: 'Objetos furantes de furos furados'},
+                                  {name: 'Parafusadeiras', description: 'Objetos parafusantes de parafusos parafusados'}])
+
 tool = Tool.create!(name: 'Furadeira',
                     description: 'Furadeira Black&Decker...',
                     serial_number: '123456',
-                    tools_group: 'Furadeiras',
+                    tools_group: tools_group.first,
                     status: 'Ativo')
 
 contract = Contract.create!(term: 15,
