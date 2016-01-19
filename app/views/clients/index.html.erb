@@ -1,7 +1,13 @@
 <div class="row">
-  <div class="col-md-12 col-sm-12">
-    <div class="container">
+  <div class="col-md-10 col-sm-10">
       <h3>Lista de Clientes</h3>
+  </div>
+  <div class="col-md-2 col-sm-2">
+    <h3><%= link_to 'Novo', new_client_path,class: "btn btn-success pull-right" %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
       <table id="clients" class='table table-striped'>
         <thead>
           <tr>
@@ -13,13 +19,12 @@
         <tbody>
           <% @clients.each do |client| %>
           <tr>
-            <td class="text-center"><%= link_to client.fantasy_name, client %></td>
-            <td class="text-center"><%= client.cnpj %></td>
-            <td class="text-center"><%= client.state %></td>
+            <td><%= link_to client.fantasy_name, client %></td>
+            <td><%= client.cnpj %></td>
+            <td><%= client.state %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-    </div>
   </div>
 </div>

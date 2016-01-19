@@ -32,7 +32,9 @@ feature 'User creates a new client' do
     expect(page).to have_content(client.zipcode)
     expect(page).to have_content(client.neighborhood)
     expect(page).to have_content(client.city)
-    expect(page).to have_content(client.state)
+    within('.details') do
+      expect(page).to have_content(client.state)
+    end
   end
 
   scenario 'invalid data' do

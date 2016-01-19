@@ -9,16 +9,20 @@
 <div class="row">
   <div class="col-md-12 col-sm-12">
     <table class = 'table table-striped'>
-      <tr>
-        <th> Nome </th>
-        <th> Descrição </th>
-      </tr>
-      <% @toolsgroup.each do |group|%>
-      <tr>
-        <td><%= link_to group.name, group %></td>
-        <td><%= link_to group.description, group %></td>
-      </tr>
-      <% end %>
+      <thead>
+        <tr>
+          <th> Nome </th>
+          <th> Descrição </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @toolsgroup.each do |group|%>
+        <tr>
+          <td><%= link_to group.name, group %></td>
+          <td><%= link_to group.description, group %></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
