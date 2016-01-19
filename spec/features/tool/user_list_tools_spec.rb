@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User list tools' do
   scenario 'Sucessfully' do
-    tool = Tool.create(name: 'Furadeira Blackdecker',
+    tool = Tool.create(name: 'Furadeira Black&Decker',
                        description: 'Furadeira de alta rotação',
                        serial_number: 'SEA007',
                        tools_group: 'Furadeiras',

@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 client = Client.create!(company_name:'Campus Code',
+                        fantasy_name: 'Campus Code',
                         cnpj:'26.286.134/0001-04',
                         contact_name:'Gustavo',
                         phone:'555-555',
@@ -20,7 +21,7 @@ client = Client.create!(company_name:'Campus Code',
                         state:'SP')
 
 tool = Tool.create!(name: 'Furadeira',
-                    description: 'Furadeira Black Decker...',
+                    description: 'Furadeira Black&Decker...',
                     serial_number: '123456',
                     tools_group: 'Furadeiras',
                     status: 'Ativo')

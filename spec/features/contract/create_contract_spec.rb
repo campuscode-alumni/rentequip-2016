@@ -4,7 +4,7 @@ feature 'Create a new Contract' do
   scenario 'successfully' do
     client = create(:client)
 
-    tool = Tool.create(name: 'Furadeira Blackdecker',
+    tool = Tool.create(name: 'Furadeira Black&Decker',
                        description: 'Furadeira de alta rotação',
                        serial_number: 'SEA007',
                        tools_group: 'Furadeiras',
@@ -14,8 +14,8 @@ feature 'Create a new Contract' do
 
     today = Time.zone.now
 
-    select "#{client.company_name} #{client.state}", from: 'contract[client_id]'
     select "#{tool.serial_number} #{tool.name}", from: 'contract[tool_ids][]'
+    select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
     fill_in 'contract[term]', with: 15
     fill_in 'contract[initial_date]', with: today
     fill_in 'contract[total_price]', with: 3000.00
@@ -27,7 +27,7 @@ feature 'Create a new Contract' do
     end
 
     contract = Contract.last
-    expect(page).to have_content client.company_name
+    expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
     expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
@@ -54,8 +54,7 @@ feature 'Create a new Contract' do
 
     visit new_contract_path
 
-    expect(page).to have_content("#{client.company_name} #{client.state}")
-    # TODO: ALTERAR COMPANY_NAME PARA FANTASY_NAME QUANDO O CAMPO FOR CRIADO
+    expect(page).to have_content("#{client.fantasy_name} #{client.state}")
   end
 
   scenario 'loads a list with tools serial number' do

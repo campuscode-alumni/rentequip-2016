@@ -17,7 +17,7 @@
           <% @contracts.each do |contract| %>
           <tr>
             <td class="text-center"><%= link_to '2016001', contract %></td>
-            <td class="text-center"><%= contract.client.company_name %></td>
+            <td class="text-center"><%= "#{contract.client.fantasy_name} #{contract.client.state}" %></td>
             <td class="text-center"><%= contract.print_tools %></td>
             <td class="text-center"><%= contract.tools.count %></td>
             <td class="text-center"><%= contract.format_date(contract.deadline) %></td>

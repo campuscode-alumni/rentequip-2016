@@ -5,7 +5,7 @@
 
 <dl class="dl-horizontal">
   <dt>Empresa</dt>
-  <dd><%= "#{@contract.client.company_name} #{@contract.client.state}"%></dd>
+  <dd><%= "#{@contract.client.fantasy_name} #{@contract.client.state}" %></dd>
   <dt>Ferramentas</dt>
   <% @contract.tools.each do |tool| %>
     <dd><%= "#{tool.serial_number} #{tool.name}" %></dd>

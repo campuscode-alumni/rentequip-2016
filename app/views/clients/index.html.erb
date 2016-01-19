@@ -1,4 +1,25 @@
-<% @clients.each do |client| %>
-  <%= link_to client.company_name, client %>
-  <%= client.cnpj %>
-<% end %>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <div class="container">
+      <h3>Lista de Clientes</h3>
+      <table id="clients" class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Nome Fantasia</th>
+            <th>CNPJ</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clients.each do |client| %>
+          <tr>
+            <td class="text-center"><%= link_to client.fantasy_name, client %></td>
+            <td class="text-center"><%= client.cnpj %></td>
+            <td class="text-center"><%= client.state %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

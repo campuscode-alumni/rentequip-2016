@@ -4,7 +4,7 @@ feature 'Try to create a contract' do
   scenario 'unsuccessfully' do
     client = create(:client)
 
-    tool = Tool.create(name: 'Furadeira Blackdecker',
+    tool = Tool.create(name: 'Furadeira Black&Decker',
                        description: 'Furadeira de alta rotação',
                        serial_number: 'SEA007',
                        tools_group: 'Furadeiras',
@@ -14,8 +14,8 @@ feature 'Try to create a contract' do
 
     today = Time.zone.now
 
-    select "#{client.company_name} #{client.state}", from: 'contract[client_id]'
     select "#{tool.serial_number} #{tool.name}", from: 'contract[tool_ids][]'
+    select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
     fill_in 'contract[term]', with: 15
     fill_in 'contract[initial_date]', with: today
     fill_in 'contract[total_price]', with: 3000.00
