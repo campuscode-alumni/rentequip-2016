@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Create a new Contract' do
   scenario 'successfully' do
     client = create(:client)
+
     tool = create(:tool)
 
     visit new_contract_path
