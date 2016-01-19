@@ -4,11 +4,7 @@ feature 'Try to create a contract' do
   scenario 'unsuccessfully' do
     client = create(:client)
 
-    tool = Tool.create(name: 'Furadeira Black&Decker',
-                       description: 'Furadeira de alta rotação',
-                       serial_number: 'SEA007',
-                       tools_group: 'Furadeiras',
-                       status: 'Ativo')
+    tool = create(:tool)
 
     visit new_contract_path
 
