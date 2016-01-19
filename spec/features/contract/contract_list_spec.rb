@@ -10,14 +10,14 @@ feature 'List contracts' do
 
     visit root_path
 
-    expect(page).to have_content client.company_name
+    expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.deadline
     expect(page).to have_content 'Ver mais'
 
     click_on 'Ver mais'
 
-    expect(page).to have_content client.company_name
+    expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
     expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')

@@ -14,7 +14,7 @@ feature 'Create a new Contract' do
 
     today = Time.zone.now
 
-    select client.company_name, from: 'contract[client_id]'
+    select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
     select tool.name, from: 'contract[tool_ids][]'
     fill_in 'contract[term]', with: 15
     fill_in 'contract[initial_date]', with: today
@@ -25,7 +25,7 @@ feature 'Create a new Contract' do
     click_on 'Emitir Contrato'
 
     contract = Contract.last
-    expect(page).to have_content client.company_name
+    expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
     expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
@@ -52,8 +52,7 @@ feature 'Create a new Contract' do
 
     visit new_contract_path
 
-    expect(page).to have_content("#{client.company_name} #{client.state}")
-    # TODO: ALTERAR COMPANY_NAME PARA FANTASY_NAME QUANDO O CAMPO FOR CRIADO
+    expect(page).to have_content("#{client.fantasy_name} #{client.state}")
   end
 
   scenario 'loads a list with tools serial number' do
