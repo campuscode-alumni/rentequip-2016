@@ -27,7 +27,8 @@ describe Contract do
       contract.tools << build(:tool, name: 'Betoneira')
       contract.tools << build(:tool, name: 'Marteladeira')
       contract.tools << build(:tool, name: 'Andaime')
-      expect(contract.print_tools).to eq 'Furadeira, Britadeira, Betoneira, Marteladeira, Andaime'
+      expect(contract.print_tools)
+        .to eq 'Furadeira, Britadeira, Betoneira, Marteladeira, Andaime'
     end
   end
 end
