@@ -17,7 +17,7 @@ feature 'User creates a new client' do
     fill_in 'client[zipcode]',                  with: client.zipcode
     fill_in 'client[neighborhood]',             with: client.neighborhood
     fill_in 'client[city]',                     with: client.city
-    fill_in 'client[state]',                    with: client.state
+    select 'São Paulo', from: 'client[state]'
 
     click_on 'Criar Cliente'
 
@@ -40,10 +40,12 @@ feature 'User creates a new client' do
 
     click_on 'Criar Cliente'
 
-    ['Razão Social', 'Nome Fantasia', 'CNPJ', 'Nome do contato', 'Telefone',
-     'Logradouro', 'Número', 'E-mail',
-     'CEP', 'Bairro', 'Cidade', 'Estado'].each do |field|
-      expect(page).to have_content "#{field}can\'t be blank"
+    %w(company_name fantasy_name cnpj contact_name phone
+       email address address_number
+       zipcode neighborhood city state).each do |field|
+      within(".client_#{field}") do
+        expect(page).to have_content "can\'t be blank"
+      end
     end
   end
 end
