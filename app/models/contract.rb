@@ -17,6 +17,6 @@ class Contract < ActiveRecord::Base
   private
 
   def set_deadline
-    self.deadline = initial_date + term.days
+    self.deadline = initial_date + term.days if term
   end
 end

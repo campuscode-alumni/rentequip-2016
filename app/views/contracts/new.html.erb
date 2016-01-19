@@ -1,9 +1,19 @@
 <div class="row">
+  <div class="col-md-12">
+    <% if flash[:warning] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="error_message"><%= flash[:warning] %></span>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
   <%= simple_form_for @contract do |f| %>
-  <%= f.association :client, label: "Cliente", label_method: lambda { |client| "#{client.fantasy_name} #{client.state}".html_safe }, value_method: :id, class: "col-md-12 col-sm-12" %>
-  <%= f.association :tools, label: "Equipamento(s)", label_method: lambda { |tool| "#{tool.serial_number} #{tool.name}".html_safe } %>
-  <%= f.input :term, label: "Prazo", error: "Campo obrigatório" %>
-  <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, error: "Campo obrigatório", input_html: { value: Time.zone.now.strftime('%d/%m/%Y') }%>
+  <%= f.association :client, label: "Cliente", label_method: lambda { |client| "#{client.fantasy_name} #{client.state}".html_safe }, value_method: :id, class: "col-md-12 col-sm-12", error: "Campo obrigatório" %>
+  <%= f.association :tools, label: "Equipamento(s)", label_method: lambda { |tool| "#{tool.serial_number} #{tool.name}".html_safe }, error: "Campo obrigatório" %>
+  <%= f.input :term, label: "Prazo", collection: @terms, prompt: "Selecione um prazo", error: "Campo obrigatório" %>
+  <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, input_html: { value: Time.zone.now.strftime('%d/%m/%Y') }, error: "Campo obrigatório"%>
   <%= f.input :total_price, label: "Preço do contrato", error: "Campo obrigatório" %>
   <%= f.input :delivery_address, label: "Endereço de entrega", error: "Campo obrigatório" %>
   <%= f.input :responsable, label: "Responsável", error: "Campo obrigatório" %>
