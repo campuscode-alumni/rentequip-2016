@@ -14,6 +14,7 @@ class ContractsController < ApplicationController
     if @contract.save
       redirect_to @contract
     else
+      flash[:warning] = 'Atenção! Todos os campos são obrigatórios.'
       render :new
     end
   end
@@ -23,6 +24,7 @@ class ContractsController < ApplicationController
   def set_collections
     @clients = Client.all
     @tools = Tool.all
+    @terms = Term::TERMS
   end
 
   def set_contract

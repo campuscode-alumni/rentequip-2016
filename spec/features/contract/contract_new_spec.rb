@@ -12,7 +12,7 @@ feature 'Try to create a contract' do
 
     select "#{tool.serial_number} #{tool.name}", from: 'contract[tool_ids][]'
     select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
-    fill_in 'contract[term]', with: 15
+    select '1 quinzena', from: 'contract[term]'
     fill_in 'contract[initial_date]', with: today
     fill_in 'contract[total_price]', with: 3000.00
     fill_in 'contract[delivery_address]', with: 'Alameda Santos, 1293'
