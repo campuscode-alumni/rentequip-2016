@@ -21,18 +21,18 @@ feature 'User creates a new client' do
 
     click_on 'Criar Cliente'
 
-    expect(page).to have_content(client.company_name)
-    expect(page).to have_content(client.fantasy_name)
-    expect(page).to have_content(client.cnpj)
-    expect(page).to have_content(client.contact_name)
-    expect(page).to have_content(client.phone)
-    expect(page).to have_content(client.email)
-    expect(page).to have_content(client.address)
-    expect(page).to have_content(client.address_number)
-    expect(page).to have_content(client.zipcode)
-    expect(page).to have_content(client.neighborhood)
-    expect(page).to have_content(client.city)
-    within('.details') do
+    within('#client-details') do
+      expect(page).to have_content(client.company_name)
+      expect(page).to have_content(client.fantasy_name)
+      expect(page).to have_content(client.cnpj)
+      expect(page).to have_content(client.contact_name)
+      expect(page).to have_content(client.phone)
+      expect(page).to have_content(client.email)
+      expect(page).to have_content(client.address)
+      expect(page).to have_content(client.address_number)
+      expect(page).to have_content(client.zipcode)
+      expect(page).to have_content(client.neighborhood)
+      expect(page).to have_content(client.city)
       expect(page).to have_content(client.state)
     end
   end
