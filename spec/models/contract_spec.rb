@@ -43,6 +43,7 @@ describe Contract do
       contract = build(:contract, term: 5)
       contract.tools << build(:tool, name: 'Furadeira')
       expect(contract).to_not be_valid
+      expect(contract.errors).to include :term
     end
   end
 end
