@@ -22,4 +22,9 @@ class Contract < ActiveRecord::Base
   def set_deadline
     self.deadline = initial_date + term.days if term
   end
+
+  def set_contract_number
+    contract_number = "#{Time.now.year}#{}".to_i
+  end
+
 end

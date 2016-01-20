@@ -26,6 +26,7 @@ feature 'Create a new Contract' do
 
     deadline_test = contract.initial_date + contract.term
 
+    expect(page).to have_content contract.contract_number
     expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
