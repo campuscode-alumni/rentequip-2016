@@ -11,6 +11,6 @@
   <%= f.input :zipcode, label: 'CEP'%>
   <%= f.input :neighborhood, label: 'Bairro'%>
   <%= f.input :city, label: 'Cidade'%>
-  <%= f.input :state, label: 'Estado'%>
+  <%= f.input :state, label: 'Estado', collection: ApplicationHelper::BRAZILIAN_STATES, prompt: "Escolha um Estado" %>
   <%= f.button :submit, submit_text, class:"btn btn-primary"  %>
 <% end  %>

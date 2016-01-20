@@ -17,22 +17,24 @@ feature 'User creates a new client' do
     fill_in 'client[zipcode]',                  with: client.zipcode
     fill_in 'client[neighborhood]',             with: client.neighborhood
     fill_in 'client[city]',                     with: client.city
-    fill_in 'client[state]',                    with: client.state
+    select 'São Paulo', from: 'client[state]'
 
     click_on 'Criar Cliente'
 
-    expect(page).to have_content(client.company_name)
-    expect(page).to have_content(client.fantasy_name)
-    expect(page).to have_content(client.cnpj)
-    expect(page).to have_content(client.contact_name)
-    expect(page).to have_content(client.phone)
-    expect(page).to have_content(client.email)
-    expect(page).to have_content(client.address)
-    expect(page).to have_content(client.address_number)
-    expect(page).to have_content(client.zipcode)
-    expect(page).to have_content(client.neighborhood)
-    expect(page).to have_content(client.city)
-    expect(page).to have_content(client.state)
+    within('#client-details') do
+      expect(page).to have_content(client.company_name)
+      expect(page).to have_content(client.fantasy_name)
+      expect(page).to have_content(client.cnpj)
+      expect(page).to have_content(client.contact_name)
+      expect(page).to have_content(client.phone)
+      expect(page).to have_content(client.email)
+      expect(page).to have_content(client.address)
+      expect(page).to have_content(client.address_number)
+      expect(page).to have_content(client.zipcode)
+      expect(page).to have_content(client.neighborhood)
+      expect(page).to have_content(client.city)
+      expect(page).to have_content(client.state)
+    end
   end
 
   scenario 'invalid data' do
@@ -40,10 +42,12 @@ feature 'User creates a new client' do
 
     click_on 'Criar Cliente'
 
-    ['Razão Social', 'Nome Fantasia', 'CNPJ', 'Nome do contato', 'Telefone',
-     'Logradouro', 'Número', 'E-mail',
-     'CEP', 'Bairro', 'Cidade', 'Estado'].each do |field|
-      expect(page).to have_content "#{field}can\'t be blank"
+    %w(company_name fantasy_name cnpj contact_name phone
+       email address address_number
+       zipcode neighborhood city state).each do |field|
+      within(".client_#{field}") do
+        expect(page).to have_content "can\'t be blank"
+      end
     end
   end
 end

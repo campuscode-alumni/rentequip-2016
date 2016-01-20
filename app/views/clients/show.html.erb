@@ -2,7 +2,7 @@
   <h1>Cliente <%= @client.fantasy_name %> <%= @client.state %></h1>
 </div>
 
-<dl class="dl-horizontal">
+<dl id="client-details" class="dl-horizontal">
   <dt>Razão Social</dt>
   <dd><%= @client.company_name %></dd>
   <dt>CNPJ</dt>
@@ -21,6 +21,8 @@
   <dd><%= @client.neighborhood %></dd>
   <dt>Cidade</dt>
   <dd><%= @client.city %></dd>
+  <dt>Estado</dt>
+  <dd><%= @client.state %></dd>
   <dt>Nome do contato</dt>
   <dd><%= @client.contact_name %></dd>
   <dt>Telefone</dt>
