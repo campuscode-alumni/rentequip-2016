@@ -6,6 +6,9 @@ class Contract < ActiveRecord::Base
 
   before_validation :set_deadline
 
+  validates :term, inclusion: { in: Term::TERMS.values,
+                                message: '%{value} não é um valor válido' }
+
   def print_tools
     tools.map(&:name).join(', ')
   end
