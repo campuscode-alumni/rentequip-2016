@@ -1,18 +1,17 @@
 <div class="row">
   <div class="col-md-12 col-sm-12">
-    <h3>Grupos</h3>
+    <div class="page-header">
+      <h1><%= @toolsgroup.name %></h1>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12 col-sm-12">
-    <dl>
-      <dt>Nome:</dt>
-      <dd><%= @toolsgroup.name %></dd>
-      <dt>Descrição:</dt>
+    <dl class="dl-horizontal">
+      <dt>Descrição</dt>
       <dd><%= @toolsgroup.description %></dd>
     </dl>
     <%= link_to 'Atualizar', edit_tools_group_path(@toolsgroup),class: "btn btn-primary" %>
-    <%= link_to 'Voltar', tools_groups_path,class: "btn btn-danger" %>
-    <%= link_to 'Excluir', tools_group_path(@toolsgroup), method: :delete, class: "btn btn-danger" %>
+    <%= link_to 'Excluir', tools_group_path(@toolsgroup), method: :delete, class: "btn btn-danger" unless @toolsgroup.tools.any? %>
   </div>
 </div>
