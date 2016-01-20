@@ -31,4 +31,18 @@ describe Contract do
         .to eq 'Furadeira, Britadeira, Betoneira, Marteladeira, Andaime'
     end
   end
+
+  describe 'term validation' do
+    it 'successfully' do
+      contract = build(:contract, term: 7)
+      contract.tools << build(:tool, name: 'Furadeira')
+      expect(contract).to be_valid
+    end
+
+    it 'unsuccessfully' do
+      contract = build(:contract, term: 5)
+      contract.tools << build(:tool, name: 'Furadeira')
+      expect(contract).to_not be_valid
+    end
+  end
 end
