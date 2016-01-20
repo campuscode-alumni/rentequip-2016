@@ -1,10 +1,5 @@
-<div class="row">
-  <div class="col-md-10 col-sm-10">
-      <h3>Grupos</h3>
-  </div>
-  <div class="col-md-2 col-sm-2">
-    <h3><%= link_to 'Novo', new_tools_group_path,class: "btn btn-success pull-right" %></h3>
-  </div>
+<div class="page-header">
+    <h1>Grupos de Equipamentos</h1>
 </div>
 <div class="row">
   <div class="col-md-12 col-sm-12">
@@ -24,5 +19,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= link_to 'Novo', new_tools_group_path,class: "btn btn-success pull-right" %>
   </div>
 </div>
