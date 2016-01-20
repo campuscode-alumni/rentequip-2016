@@ -1,5 +1,24 @@
-<% @prices.each do |price| %>
-  <%= "%0.2f" % price.price %>
-  <%= price.tools_group.name %>
-  <%= price.deadline %>
-<% end %>
+<div class="row">
+  <div class="col-md-10 col-sm-10">
+      <h3>Lista de Preços</h3>
+  </div>
+  <div class="col-md-2 col-sm-2">
+    <h3><%= link_to 'Novo', new_price_path, class: "btn btn-success pull-right" %></h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+    <table class = 'table table-striped'>
+      <tr>
+        <th> Preço </th>
+        <th> Prazo </th>
+      </tr>
+      <% @prices.each do |price|%>
+      <tr>
+        <td><%= link_to "%0.2f" % price.price, price %></td>
+        <td><%= link_to price.deadline, price %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

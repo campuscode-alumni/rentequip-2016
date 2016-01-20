@@ -15,6 +15,6 @@ feature 'User delete Tools Group' do
 
     visit edit_tools_group_path(tool.tools_group)
 
-    expect(page).not_to have_content('Excluir')
+    page.find('Excluir')
   end
 end
