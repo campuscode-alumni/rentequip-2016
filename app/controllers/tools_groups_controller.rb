@@ -26,7 +26,7 @@ class ToolsGroupsController < ApplicationController
     if @toolsgroup.save
       redirect_to @toolsgroup
     else
-      flash[:warning] = 'Atenção! O campo nome é obrigatório.'
+      flash[:warning] = 'Não foi possível salvar grupo de ferramentas'
       render :new
     end
   end

@@ -13,7 +13,7 @@ feature 'User delete Tools Group' do
   scenario 'failed' do
     tool = create(:tool)
 
-    visit edit_tools_group_path(tool.tools_group)
+    visit tools_group_path(tool.tools_group)
 
     page.find('Excluir')
   end

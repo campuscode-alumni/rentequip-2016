@@ -12,7 +12,7 @@ feature 'Create a new Contract' do
 
     select "#{tool.serial_number} #{tool.name}", from: 'contract[tool_ids][]'
     select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
-    fill_in 'contract[term]', with: 15
+    select '1 quinzena', from: 'contract[term]'
     fill_in 'contract[initial_date]', with: today
     fill_in 'contract[total_price]', with: 3000.00
     fill_in 'contract[delivery_address]', with: 'Alameda Santos, 1293'
@@ -23,6 +23,9 @@ feature 'Create a new Contract' do
     end
 
     contract = Contract.last
+
+    deadline_test = contract.initial_date + contract.term
+
     expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
@@ -31,6 +34,7 @@ feature 'Create a new Contract' do
     expect(page).to have_content 'R$ 3.000,00'
     expect(page).to have_content contract.delivery_address
     expect(page).to have_content contract.responsable
+    expect(page).to have_content deadline_test.strftime('%d/%m/%Y')
   end
 
   scenario 'loads current data as default' do
@@ -60,5 +64,15 @@ feature 'Create a new Contract' do
     visit new_contract_path
 
     expect(page).to have_content("#{tool.serial_number} #{tool.name}")
+  end
+
+  scenario 'Fail to create a new contract' do
+    visit new_contract_path
+
+    within('form') do
+      click_on 'Emitir Contrato'
+    end
+
+    expect(page).to have_content 'Atenção! Todos os campos são obrigatórios.'
   end
 end

@@ -31,9 +31,26 @@
             <li>
               <%= link_to "Preços", prices_path %>
             </li>
+            <li>
+              <%= link_to 'Grupo de Equipamentos', tools_groups_path %>
+            </li>
           </ul>
         </div>
       </nav>
+
+      <div class="row">
+        <% if flash[:success] %>
+        <div class="col-md-12 col-sm-12">
+          <div class="alert alert-success alert-dismissible pull-right" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">x</span>
+            </button>
+            <%= flash[:success] %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
       <%= yield %>
     </div>
   </body>
