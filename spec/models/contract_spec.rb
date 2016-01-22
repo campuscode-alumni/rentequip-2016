@@ -46,4 +46,20 @@ describe Contract do
       expect(contract.errors).to include :term
     end
   end
+
+  describe 'contract number validation' do
+    it 'successfully' do
+      contract = build(:contract)
+      contract.tools << build(:tool, name: 'Furadeira')
+      contract.valid?
+      expect(contract.contract_number).to_not be_nil
+    end
+
+    it 'successfully create contract_number' do
+      contract = build(:contract)
+      contract.tools << build(:tool, name: 'Furadeira')
+      contract.valid?
+      expect(contract.contract_number).to eq "#{Time.zone.now.year}000001"
+    end
+  end
 end

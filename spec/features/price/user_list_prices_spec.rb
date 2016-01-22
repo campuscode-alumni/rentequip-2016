@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User list prices' do
   scenario 'successfully' do
-    pending("está falhando")
+    pending('está falhando')
     price = create(:price)
 
     visit prices_path

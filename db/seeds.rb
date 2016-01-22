@@ -37,3 +37,7 @@ contract = Contract.create!(term: 15,
                             responsable: 'Alan',
                             client: client,
                             tools: [tool])
+
+prices = Price.create!(price: 12,
+                       deadline: 15,
+                       tools_group:tools_group.first)

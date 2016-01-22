@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'Create a new Contract' do
   scenario 'successfully' do
     client = create(:client)
-
     tool = create(:tool)
 
     visit new_contract_path
@@ -14,7 +13,6 @@ feature 'Create a new Contract' do
     select "#{client.fantasy_name} #{client.state}", from: 'contract[client_id]'
     select '1 quinzena', from: 'contract[term]'
     fill_in 'contract[initial_date]', with: today
-    fill_in 'contract[total_price]', with: 3000.00
     fill_in 'contract[delivery_address]', with: 'Alameda Santos, 1293'
     fill_in 'contract[responsable]', with: 'Alan'
 
@@ -25,14 +23,15 @@ feature 'Create a new Contract' do
     contract = Contract.last
 
     deadline_test = contract.initial_date + contract.term
-
     expect(page).to have_content contract.contract_number
     expect(page).to have_content "#{client.fantasy_name} #{client.state}"
     expect(page).to have_content tool.name
     expect(page).to have_content contract.term
     expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
     expect(page).to have_content contract.deadline.strftime('%d/%m/%Y')
-    expect(page).to have_content 'R$ 3.000,00'
+    expect(page).to have_content
+    number_to_currency(contract.total_price,
+                       unit: 'R$ ', separator: ',', delimiter: '.')
     expect(page).to have_content contract.delivery_address
     expect(page).to have_content contract.responsable
     expect(page).to have_content deadline_test.strftime('%d/%m/%Y')
