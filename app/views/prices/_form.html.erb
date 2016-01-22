@@ -1,0 +1,6 @@
+<%= simple_form_for @price do |f| %>
+  <%= f.input :price, label: 'Preço' %>
+  <%= f.input :tools_group_id, label: "Grupo de Equipamentos", collection: @tools_group, prompt: "Selecione um grupo", error: "Campo obrigatório" %>
+  <%= f.input :deadline, label: "Prazo", collection: @terms, prompt: "Selecione um Prazo", error: "Campo obrigatório" %>
+  <%= f.button :submit, submit_btn, class:"btn btn-primary"  %>
+<% end  %>

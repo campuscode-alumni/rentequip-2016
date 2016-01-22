@@ -10,11 +10,12 @@ feature 'User delete Tools Group' do
 
     expect(page).to have_content('Grupo excluido com sucesso')
   end
+
   scenario 'failed' do
     tool = create(:tool)
 
     visit tools_group_path(tool.tools_group)
 
-    page.find('Excluir')
+    expect(page).not_to have_button('Excluir')
   end
 end
