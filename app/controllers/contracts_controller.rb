@@ -1,6 +1,9 @@
 class ContractsController < ApplicationController
-  before_action :set_contract, only: [:show]
-  before_action :set_collections, only: [:show, :new, :create]
+  before_action :set_contract, only: [:show, :create_delivery_receipt,
+                                      :delivery_receipt]
+  before_action :set_collections, only: [:show, :new, :create,
+                                         :create_delivery_receipt,
+                                         :delivery_receipt]
 
   def show
   end
@@ -17,6 +20,16 @@ class ContractsController < ApplicationController
       flash[:warning] = 'Atenção! Todos os campos são obrigatórios.'
       render :new
     end
+  end
+
+  def delivery_receipt
+  end
+
+  def create_delivery_receipt
+    @delivery_receipt = DeliveryReceipt.new
+    @delivery_receipt.contract = @contract
+    @delivery_receipt.save
+    redirect_to delivery_receipt_contract_path
   end
 
   private
