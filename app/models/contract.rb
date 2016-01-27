@@ -23,6 +23,10 @@ class Contract < ActiveRecord::Base
     delivery_receipt.present?
   end
 
+  def devolution_receipt?
+    devolution_receipt.present? && devolution_receipt.persisted?
+  end
+
   private
 
   def set_deadline

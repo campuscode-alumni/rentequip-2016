@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127001917) do
+ActiveRecord::Schema.define(version: 20160127211542) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "company_name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160127001917) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "contract_id"
+    t.string   "employee"
   end
 
   add_index "devolution_receipts", ["contract_id"], name: "index_devolution_receipts_on_contract_id"

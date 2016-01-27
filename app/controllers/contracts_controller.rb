@@ -38,10 +38,14 @@ class ContractsController < ApplicationController
   end
 
   def create_devolution_receipt
-    @devolution_receipt = DevolutionReceipt.new
-    @ddevolution_receipt.contract = @contract
-    @devolution_receipt.save
-    redirect_to devolution_receipt_contract_path
+    @devolution_receipt = DevolutionReceipt.new(employee: params[:employee],
+                                                contract: @contract)
+    if @devolution_receipt.save
+      redirect_to devolution_receipt_contract_path
+    else
+      flash[:warning] = 'Atenção! O campo Funcionário é obrigatório.'
+      render :show
+    end
   end
 
   private

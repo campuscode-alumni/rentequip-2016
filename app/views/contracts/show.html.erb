@@ -26,7 +26,21 @@
 </dl>
 <% if @contract.delivery_receipt? %>
 <%= link_to 'Visualizar Recibo de Entrega', delivery_receipt_contract_path, class: "btn btn-primary" %>
-<%= link_to 'Emitir Recibo de Devolução', devolution_receipt_contract_path, class: "btn btn-primary" %>
 <% else %>
 <%= link_to 'Emitir Recibo de Entrega', delivery_receipt_contract_path, method: 'post', class: "btn btn-primary" %>
 <% end %>
+<% if @contract.devolution_receipt? %>
+<%= link_to 'Visualizar Recibo de Devolução', devolution_receipt_contract_path, class: "btn btn-primary" %>
+<% else %>
+<div class="row"><br>
+  <div class="col-md-12 col-sm-12">
+    <%= form_tag devolution_receipt_contract_path, { class: "form-inline" } do %>
+    <div class="form-group">
+      <%= label_tag(:employee, "Funcionário") %>
+      <%= text_field_tag(:employee, "", class:"form-control") %>
+    </div>
+    <%= submit_tag 'Emitir Recibo de Devolução', class:"btn btn-primary" %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
