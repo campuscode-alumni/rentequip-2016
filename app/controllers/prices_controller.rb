@@ -1,6 +1,6 @@
 class PricesController < ApplicationController
   def index
-    @prices = Price.all.group('term, tools_group_id').order('tools_group_id, term')
+    @prices = Price.group_price
   end
 
   def new

@@ -12,16 +12,14 @@ feature 'User list prices' do
   end
 
   scenario 'list last price' do
-    # price = create(:price)
-
     tools_group_1 = create(:tools_group)
     tools_group_2 = create(:tools_group, name: 'Parafusadeiras')
 
-    price_group_1_old = create(:price, price: 10, tools_group: tools_group_1)
-    price_group_1_new = create(:price, price: 12, tools_group: tools_group_1)
+    create(:price, price: 10, tools_group: tools_group_1)
+    create(:price, price: 12, tools_group: tools_group_1)
 
-    price_group_2_old = create(:price, price: 11, tools_group: tools_group_2)
-    price_group_2_new = create(:price, price: 13, tools_group: tools_group_2)
+    create(:price, price: 11, tools_group: tools_group_2)
+    create(:price, price: 13, tools_group: tools_group_2)
 
     visit prices_path
 
@@ -36,6 +34,5 @@ feature 'User list prices' do
       expect(page).to have_content('Parafusadeiras')
       expect(page).to have_content(15)
     end
-
   end
 end
