@@ -14,13 +14,14 @@ feature 'User list prices' do
   scenario 'list last price' do
     price = create(:price)
 
-    4.times do
-      create(:price)
+    4.times do |n|
+      create(:price, price: (n+10))
     end
 
     visit prices_path
 
-    expect(page).to have_content(price.term, count: 1)
+    expect(page).to have_content(13)
+    expect(page).not_to have_content(10)
 
   end
 end

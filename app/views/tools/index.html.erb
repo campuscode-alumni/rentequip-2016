@@ -1,7 +1,38 @@
-<% @tools.each do |tool| %>
+<!-- <% @tools.each do |tool| %>
   <%= tool.name %>
   <%= tool.description %>
   <%= tool.serial_number %>
   <%= tool.tools_group.name %>
   <%= tool.status %>
-<% end %>
+<% end %> -->
+
+
+<div class="page-header">
+   <h1>Lista de Equipamentos</h1>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12">
+      <table id="equipamentos" class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Nome do Equipamento</th>
+            <th>Descrição</th>
+            <th>Grupo de Equipamentos</th>
+            <th>Serial</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tools.each do |tool| %>
+          <tr>
+            <td><%= tool.name %></td>
+            <td><%= tool.description %></td>
+            <td><%= tool.serial_number %></td>
+            <td><%= tool.tools_group.name %></td>
+            <td><%= tool.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
