@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20160127211542) do
 
   create_table "prices", force: :cascade do |t|
     t.decimal  "price"
-    t.integer  "deadline"
+    t.integer  "term"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "tools_group_id"

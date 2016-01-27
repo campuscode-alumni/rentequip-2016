@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
   resources :clients, only: [:create, :index, :show, :new, :edit, :update]
   resources :tools, only: [:index]
-  resources :prices, only: [:index, :create]
+  resources :prices, only: [:create, :index, :show, :new]
   resources :tools_groups
 end
