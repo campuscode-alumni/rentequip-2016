@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126212551) do
+ActiveRecord::Schema.define(version: 20160127211542) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "company_name"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20160126212551) do
   end
 
   add_index "delivery_receipts", ["contract_id"], name: "index_delivery_receipts_on_contract_id"
+
+  create_table "devolution_receipts", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "contract_id"
+    t.string   "employee"
+  end
+
+  add_index "devolution_receipts", ["contract_id"], name: "index_devolution_receipts_on_contract_id"
 
   create_table "prices", force: :cascade do |t|
     t.decimal  "price"

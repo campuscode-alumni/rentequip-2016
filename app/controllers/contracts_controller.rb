@@ -1,9 +1,11 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :create_delivery_receipt,
-                                      :delivery_receipt]
+                                      :delivery_receipt, :devolution_receipt,
+                                      :create_devolution_receipt]
   before_action :set_collections, only: [:show, :new, :create,
                                          :create_delivery_receipt,
-                                         :delivery_receipt]
+                                         :delivery_receipt, :devolution_receipt,
+                                         :create_devolution_receipt]
 
   def show
   end
@@ -30,6 +32,20 @@ class ContractsController < ApplicationController
     @delivery_receipt.contract = @contract
     @delivery_receipt.save
     redirect_to delivery_receipt_contract_path
+  end
+
+  def devolution_receipt
+  end
+
+  def create_devolution_receipt
+    @devolution_receipt = DevolutionReceipt.new(employee: params[:employee],
+                                                contract: @contract)
+    if @devolution_receipt.save
+      redirect_to devolution_receipt_contract_path
+    else
+      flash[:warning] = 'Atenção! O campo Funcionário é obrigatório.'
+      render :show
+    end
   end
 
   private
