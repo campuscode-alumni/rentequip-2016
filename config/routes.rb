@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :contracts, only: [:show, :new, :create]
   resources :clients, only: [:create, :index, :show, :new, :edit, :update]
   resources :tools, only: [:index]
-  resources :prices, only: [:index, :create, :new, :show]
+  resources :prices, only: [:create, :index, :show, :new]
   resources :tools_groups
 end

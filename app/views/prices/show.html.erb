@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12 col-sm-12">
     <div class="page-header">
-      <h1><%= @price.price %></h1>
+      <h1><%= number_to_currency(@price.price, unit: "R$ ", separator: ",", delimiter: ".") %></h1>
     </div>
   </div>
 </div>
@@ -11,7 +11,8 @@
       <dt>Grupo de Equipamentos</dt>
       <dd><%= @price.tools_group.name %></dd>
       <dt>Prazo</dt>
-      <dd><%= @price.deadline %></dd>
+      <dd><%= @price.term %></dd>
     </dl>
+    <%= link_to 'Atualizar', new_price_path(tool_group: @price.tools_group.id, term: @price.term),class: "btn btn-primary" %>
   </div>
 </div>

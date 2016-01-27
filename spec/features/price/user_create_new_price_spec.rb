@@ -7,11 +7,11 @@ feature 'User create a new price' do
 
     fill_in 'price_price', with: '123.55'
     select 'Furadeira', from: 'price_tools_group_id'
-    select '1 quinzena', from: 'price_deadline'
+    select '1 quinzena', from: 'price_term'
 
     click_on 'Salvar'
 
-    expect(page).to have_content('123.55')
+    expect(page).to have_content('R$ 123,55')
     expect(page).to have_content(tools_group.name)
     expect(page).to have_content('15')
   end

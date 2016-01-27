@@ -1,12 +1,12 @@
 class PricesController < ApplicationController
   def index
-    @prices = Price.all
+    @prices = Price.all.group('term, tools_group_id')
   end
 
   def new
     @tools_group = ToolsGroup.all
     @terms = Term::TERMS
-    @price = Price.new
+    @price = Price.new(term: params[:term], tools_group_id: params[:tool_group])
   end
 
   def create
@@ -26,6 +26,6 @@ class PricesController < ApplicationController
   private
 
   def price_params
-    params.require(:price).permit(:price, :deadline, :tools_group_id)
+    params.require(:price).permit(:price, :term, :tools_group_id)
   end
 end
