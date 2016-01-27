@@ -2,13 +2,37 @@ require 'rails_helper'
 
 feature 'User list prices' do
   scenario 'successfully' do
-    pending('está falhando')
     price = create(:price)
 
     visit prices_path
 
     expect(page).to have_content(price.price)
     expect(page).to have_content(price.tools_group.name)
-    expect(page).to have_content(price.deadline)
+    expect(page).to have_content(price.term)
+  end
+
+  scenario 'list last price' do
+    tools_group_1 = create(:tools_group)
+    tools_group_2 = create(:tools_group, name: 'Parafusadeiras')
+
+    create(:price, price: 10, tools_group: tools_group_1)
+    create(:price, price: 12, tools_group: tools_group_1)
+
+    create(:price, price: 11, tools_group: tools_group_2)
+    create(:price, price: 13, tools_group: tools_group_2)
+
+    visit prices_path
+
+    within('table tbody tr:first') do
+      expect(page).to have_content('12.00')
+      expect(page).to have_content('Furadeira')
+      expect(page).to have_content(15)
+    end
+
+    within('table tbody tr:last') do
+      expect(page).to have_content('13.00')
+      expect(page).to have_content('Parafusadeiras')
+      expect(page).to have_content(15)
+    end
   end
 end

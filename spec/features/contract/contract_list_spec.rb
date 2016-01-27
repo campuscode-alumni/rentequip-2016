@@ -72,25 +72,24 @@ feature 'List contracts' do
     date = "São Paulo, #{today.day}/#{today.month}/#{today.year}"
 
     travel_to 1.day.from_now do
+      visit root_path
 
-          visit root_path
+      click_on '2016001'
 
-          click_on '2016001'
+      expect(page).not_to have_content 'Emitir Recibo de Entrega'
+      expect(page).to have_content 'Visualizar Recibo de Entrega'
 
-          expect(page).not_to have_content 'Emitir Recibo de Entrega'
-          expect(page).to have_content 'Visualizar Recibo de Entrega'
+      click_on 'Visualizar Recibo de Entrega'
 
-          click_on 'Visualizar Recibo de Entrega'
-
-          expect(page).to have_content date
-          expect(page).to have_content contract.responsable
-          expect(page).to have_content contract.client.company_name
-          expect(page).to have_content contract.client.cnpj
-          expect(page).to have_content tool.name
-          expect(page).to have_content contract.term
-          expect(page).to have_content contract.delivery_address
-          expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
-          expect(page).to have_content '2016001'
+      expect(page).to have_content date
+      expect(page).to have_content contract.responsable
+      expect(page).to have_content contract.client.company_name
+      expect(page).to have_content contract.client.cnpj
+      expect(page).to have_content tool.name
+      expect(page).to have_content contract.term
+      expect(page).to have_content contract.delivery_address
+      expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
+      expect(page).to have_content '2016001'
     end
   end
 end
