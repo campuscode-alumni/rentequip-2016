@@ -12,16 +12,30 @@ feature 'User list prices' do
   end
 
   scenario 'list last price' do
-    price = create(:price)
+    # price = create(:price)
 
-    4.times do |n|
-      create(:price, price: (n+10))
-    end
+    tools_group_1 = create(:tools_group)
+    tools_group_2 = create(:tools_group, name: 'Parafusadeiras')
+
+    price_group_1_old = create(:price, price: 10, tools_group: tools_group_1)
+    price_group_1_new = create(:price, price: 12, tools_group: tools_group_1)
+
+    price_group_2_old = create(:price, price: 11, tools_group: tools_group_2)
+    price_group_2_new = create(:price, price: 13, tools_group: tools_group_2)
 
     visit prices_path
 
-    expect(page).to have_content(13)
-    expect(page).not_to have_content(10)
+    within('table tbody tr:first') do
+      expect(page).to have_content('12.00')
+      expect(page).to have_content('Furadeira')
+      expect(page).to have_content(15)
+    end
+
+    within('table tbody tr:last') do
+      expect(page).to have_content('13.00')
+      expect(page).to have_content('Parafusadeiras')
+      expect(page).to have_content(15)
+    end
 
   end
 end

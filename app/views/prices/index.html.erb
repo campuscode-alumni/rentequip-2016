@@ -9,18 +9,22 @@
 <div class="row">
   <div class="col-md-12 col-sm-12">
     <table class = 'table table-striped'>
-      <tr>
-        <th> Preço </th>
-        <th> Grupo de equipamentos </th>
-        <th> Prazo </th>
-      </tr>
-      <% @prices.each do |price|%>
-      <tr>
-        <td><%= link_to "%0.2f" % price.price, price %></td>
-        <td><%= link_to price.tools_group.name, price %></td>
-        <td><%= link_to price.term, price %></td>
-      </tr>
-      <% end %>
+      <thead>
+        <tr>
+          <th> Preço </th>
+          <th> Grupo de equipamentos </th>
+          <th> Prazo </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @prices.each do |price|%>
+        <tr>
+          <td><%= link_to "%0.2f" % price.price, price %></td>
+          <td><%= link_to price.tools_group.name, price %></td>
+          <td><%= link_to price.term, price %></td>
+        </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
