@@ -26,6 +26,7 @@
 </dl>
 <% if @contract.delivery_receipt? %>
 <%= link_to 'Visualizar Recibo de Entrega', delivery_receipt_contract_path, class: "btn btn-primary" %>
+<%= link_to 'Emitir Recibo de Devolução', devolution_receipt_contract_path, class: "btn btn-primary" %>
 <% else %>
 <%= link_to 'Emitir Recibo de Entrega', delivery_receipt_contract_path, method: 'post', class: "btn btn-primary" %>
 <% end %>

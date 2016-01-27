@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-8 col-sm-8 text-center">
+    <h1 class="text-center"> Recibo de Devolução </h1>
+    <br>
+    <% today = @contract.delivery_receipt.created_at %>
+    <h4 class="text-center"> <%= "São Paulo, #{today.day}/#{today.month}/#{today.year}" %> </h4>
+    <br>
+    <p class="text-justify">
+      Eu, <strong><%= @contract.responsable %></strong> (nome do funcionário da RentEquip), declaro ter recebido os equipamentos
+      <% @contract.tools.each do |tool| %> <strong><%= "#{tool.serial_number} #{tool.name}" %></strong><% end %>
+      (lista dos equipamentos contendo número de série e nome) em devolução referente ao contrato <strong>2016001</strong>
+      (número do contrato) em perfeitas condições da empresa <strong><%= @contract.client.company_name %></strong> (razão social),
+      inscrita no CNPJ <strong><%= @contract.client.cnpj %></strong> no dia <strong><%= @contract.deadline.strftime('%d/%m/%Y') %></strong> (data de devolução).
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="text-left">
+      ______________________________
+      <br>
+      <strong>Assinatura do Funcionário</strong>
+    </p>
+  </div>
+</div>

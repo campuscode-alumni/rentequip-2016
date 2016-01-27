@@ -1,6 +1,7 @@
 class Contract < ActiveRecord::Base
   has_and_belongs_to_many :tools
   has_one :delivery_receipt
+  has_one :devolution_receipt
   belongs_to :client
   validates :client, :tools, :term, :initial_date, :deadline, :total_price,
             :delivery_address, :responsable, presence: true
