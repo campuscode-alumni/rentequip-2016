@@ -39,8 +39,7 @@ feature 'List contracts' do
 
     click_on '2016001'
 
-    expect(page).to have_content 'Emitir Recibo de Entrega'
-    expect(page).not_to have_content 'Emitir Recibo de Devolução'
+    expect(page).not_to have_link 'Emitir Recibo de Devolução'
 
     click_on 'Emitir Recibo de Entrega'
 
@@ -79,8 +78,7 @@ feature 'List contracts' do
 
       click_on '2016001'
 
-      expect(page).not_to have_content 'Emitir Recibo de Entrega'
-      expect(page).to have_content 'Visualizar Recibo de Entrega'
+      expect(page).not_to have_link 'Emitir Recibo de Entrega'
 
       click_on 'Visualizar Recibo de Entrega'
 
@@ -116,8 +114,8 @@ feature 'List contracts' do
 
     click_on '2016001'
 
-    expect(page).not_to have_content 'Emitir Recibo de Entrega'
-    expect(page).to have_content 'Visualizar Recibo de Entrega'
+    expect(page).not_to have_link 'Emitir Recibo de Entrega'
+    expect(page).to have_link 'Visualizar Recibo de Entrega'
 
     fill_in 'employee', with: 'João'
 
@@ -161,9 +159,9 @@ feature 'List contracts' do
 
       click_on '2016001'
 
-      expect(page).not_to have_content 'Emitir Recibo de Devolução'
-      expect(page).to have_content 'Visualizar Recibo de Devolução'
-      expect(page).to have_content 'Visualizar Recibo de Entrega'
+      expect(page).not_to have_link 'Emitir Recibo de Devolução'
+      expect(page).to have_link 'Visualizar Recibo de Devolução'
+      expect(page).to have_link 'Visualizar Recibo de Entrega'
 
       click_on 'Visualizar Recibo de Devolução'
 
