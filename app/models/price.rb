@@ -5,6 +5,7 @@ class Price < ActiveRecord::Base
                                 message: '%{value} não é um valor válido' }
 
   def self.group_price
-    all.group('term, tools_group_id').order('tools_group_id, term')
+    ids = select('max(id) as id').group('term, tools_group_id')
+    all.where(id: ids).order('tools_group_id, term')
   end
 end
