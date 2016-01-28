@@ -39,6 +39,9 @@ feature 'List contracts' do
 
     click_on '2016001'
 
+    expect(page).to have_content 'Emitir Recibo de Entrega'
+    expect(page).not_to have_content 'Emitir Recibo de Devolução'
+
     click_on 'Emitir Recibo de Entrega'
 
     today = Time.zone.now
