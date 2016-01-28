@@ -1,0 +1,11 @@
+<% if @contract.can_issue_devolution_receipt? %>
+  <%= form_tag devolution_receipt_contract_path, { class: "form-inline" } do %>
+    <div class="form-group">
+      <%= label_tag(:employee, "Funcionário") %>
+      <%= text_field_tag(:employee, "", class:"form-control") %>
+    </div>
+      <%= submit_tag 'Emitir Recibo de Devolução', class:"btn btn-primary" %>
+  <% end %>
+<% elsif @contract.delivery_receipt? %>
+  <%= link_to 'Visualizar Recibo de Devolução', devolution_receipt_contract_path, class: "btn btn-primary" %>
+<% end %>
