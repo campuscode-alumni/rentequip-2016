@@ -26,6 +26,9 @@ class PricesController < ApplicationController
   private
 
   def price_params
-    params.require(:price).permit(:price, :term, :tools_group_id)
+    strong_params = params.require(:price).permit(:price, :term, :tools_group_id)
+    strong_params[:price] = strong_params[:price].gsub(/[^\d,.]/, '')
+                            .gsub(/[,.]/, '.' => '', ',' => '.')
+    strong_params
   end
 end
