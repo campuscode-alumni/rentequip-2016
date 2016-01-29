@@ -62,4 +62,24 @@ describe Contract do
       expect(contract.contract_number).to eq "#{Time.zone.now.year}000001"
     end
   end
+
+  describe 'contract price by term and tool validation' do
+    it 'successfully' do
+      contract = build(:contract)
+      tool = create(:tool, name: 'Furadeira')
+      # TODO: trocar deadline por term
+      create(:price, tools_group: tool.tools_group, deadline: contract.term,
+                     price: 15)
+      contract.tools << tool
+      contract.save
+      expect(contract.total_price).to eq 15
+    end
+
+    it 'successfully set 0 for a term without a price' do
+      contract = build(:contract, term: 3)
+      contract.tools << build(:tool, name: 'Furadeira')
+      contract.save
+      expect(contract.total_price).to eq 0
+    end
+  end
 end

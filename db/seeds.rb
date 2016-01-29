@@ -29,6 +29,12 @@ tool = Tool.create!(name: 'Furadeira',
                     tools_group: tools_group.first,
                     status: 'Ativo')
 
+tool2 = Tool.create!(name: 'Parafusadeira',
+                    description: 'Parafusadeira teste',
+                    serial_number: 'ATF123',
+                    tools_group: tools_group.last,
+                    status: 'Ativo')
+
 contract = Contract.create!(term: 15,
                             initial_date: Time.zone.now,
                             deadline: 15.days.from_now,
@@ -38,6 +44,5 @@ contract = Contract.create!(term: 15,
                             client: client,
                             tools: [tool])
 
-prices = Price.create!(price: 12,
-                       deadline: 15,
-                       tools_group:tools_group.first)
+prices = Price.create!([{price: 15, deadline: 15, tools_group:tools_group.first},
+                        {price: 30, deadline: 15, tools_group:tools_group.last}])

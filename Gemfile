@@ -14,7 +14,10 @@ gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'database_cleaner'
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'

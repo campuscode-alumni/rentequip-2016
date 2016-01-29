@@ -19,7 +19,10 @@ feature 'List Contracts at index' do
       expect(page).to have_content 'Furadeira'
       expect(page).to have_content contract.format_date(contract.deadline)
       expect(page).to have_content '3'
-      expect(page).to have_content 'R$ 3.000,00'
+      expect(page).to have_content number_to_currency(contract.total_price,
+                                                      unit: 'R$ ',
+                                                      separator: ',',
+                                                      delimiter: '.')
       expect(page).to have_content contract.contract_number
     end
   end

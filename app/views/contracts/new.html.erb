@@ -11,12 +11,20 @@
 <div class="row">
   <%= simple_form_for @contract do |f| %>
   <%= f.association :client, label: "Cliente", label_method: lambda { |client| "#{client.fantasy_name} #{client.state}".html_safe }, value_method: :id, class: "col-md-12 col-sm-12", error: "Campo obrigatório" %>
-  <%= f.association :tools, label: "Equipamento(s)", label_method: lambda { |tool| "#{tool.serial_number} #{tool.name}".html_safe }, error: "Campo obrigatório" %>
+  <%= f.input :tool_ids, label: "Equipamento(s)", required: true, wrapper_html: { class: "#{'has-error' if f.object.errors.messages[:tools].present?}" } do %>
+    <%= f.select :tool_ids, @tools.map { |t| [ "#{t.serial_number} #{t.name}", t.id, { data:{tools_group_id: t.tools_group_id} }] }, {}, {multiple:true, class: "form-control required", required: true} %>
+    <% if f.object.errors.messages[:tools].present? %>
+      <span class="help-block">Campo obrigatório</span>
+    <% end %>
+  <% end %>
   <%= f.input :term, label: "Prazo", collection: @terms, prompt: "Selecione um prazo", error: "Campo obrigatório" %>
   <%= f.input :initial_date, label: "Data inicial", as: :date, html5: true, input_html: { value: Time.zone.now.strftime('%d/%m/%Y') }, error: "Campo obrigatório"%>
-  <%= f.input :total_price, label: "Preço do contrato", error: "Campo obrigatório" %>
+  <%= f.input :total_price, label: "Preço do contrato", error: "Campo obrigatório", as: :string %>
   <%= f.input :delivery_address, label: "Endereço de entrega", error: "Campo obrigatório" %>
   <%= f.input :responsable, label: "Responsável", error: "Campo obrigatório" %>
   <%= f.button :submit, 'Emitir Contrato', class:"btn btn-primary"  %>
   <% end %>
 </div>
+<script>
+  var prices = <%= @prices.to_json.html_safe %>;
+</script>

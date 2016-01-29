@@ -16,7 +16,10 @@ feature 'Show contract' do
     expect(page).to have_content contract.term
     expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
     expect(page).to have_content contract.deadline.strftime('%d/%m/%Y')
-    expect(page).to have_content 'R$ 3.000,00'
+    expect(page).to have_content number_to_currency(contract.total_price,
+                                                    unit: 'R$ ',
+                                                    separator: ',',
+                                                    delimiter: '.')
     expect(page).to have_content contract.delivery_address
     expect(page).to have_content contract.responsable
   end

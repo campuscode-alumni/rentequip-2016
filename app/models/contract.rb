@@ -1,7 +1,7 @@
 class Contract < ActiveRecord::Base
   has_and_belongs_to_many :tools
   belongs_to :client
-  validates :client, :tools, :term, :initial_date, :deadline,
+  validates :client, :term, :tools, :initial_date, :deadline,
             :delivery_address, :responsable, presence: true
 
   before_save :calculate_total_price
@@ -21,9 +21,9 @@ class Contract < ActiveRecord::Base
   private
 
   def calculate_total_price
-    total = 0
-    tools.each {|tool| total += tool.price(self.deadline)}
-    self.total_price = total;
+    self.total_price = tools.inject(0) do |a, e|
+      a + e.price_by_term(term).price
+    end
   end
 
   def set_deadline
