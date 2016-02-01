@@ -29,7 +29,7 @@ feature 'Issue delivery receipt' do
     expect(page).to have_content '2016001'
   end
 
-  scenario 'show an already emitted delivery receipt' do
+  scenario 'show the same date in an already issued delivery receipt' do
     tool = create(:tool)
     contract = build(:contract)
     contract.tools << tool
@@ -44,8 +44,6 @@ feature 'Issue delivery receipt' do
 
       click_on '2016001'
 
-      expect(page).not_to have_link 'Emitir Recibo de Entrega'
-
       click_on 'Visualizar Recibo de Entrega'
 
       expect(page).to have_content date
@@ -58,5 +56,20 @@ feature 'Issue delivery receipt' do
       expect(page).to have_content contract.initial_date.strftime('%d/%m/%Y')
       expect(page).to have_content '2016001'
     end
+  end
+
+  scenario 'show an already issued delivery receipt' do
+    tool = create(:tool)
+    contract = build(:contract)
+    contract.tools << tool
+    contract.delivery_receipt = build(:delivery_receipt)
+    contract.save
+
+    visit root_path
+
+    click_on '2016001'
+
+    expect(page).not_to have_link 'Emitir Recibo de Entrega'
+    expect(page).to have_link 'Visualizar Recibo de Entrega'
   end
 end
