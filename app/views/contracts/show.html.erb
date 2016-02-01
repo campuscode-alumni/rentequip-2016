@@ -1,46 +1,37 @@
-<div class="page-header">
-  <h1>Contrato
-    <%= @contract.id %></h1>
-  <!-- TODO: alterar para numero do contrato quando criar o campo -->
-</div>
-
-<dl class="dl-horizontal">
-  <dt>Empresa</dt>
-  <dd><%= "#{@contract.client.fantasy_name} #{@contract.client.state}" %></dd>
-  <dt>Ferramentas</dt>
-  <% @contract.tools.each do |tool| %>
-  <dd><%= "#{tool.serial_number} #{tool.name}" %></dd>
-  <% end %>
-  <dt>Prazo</dt>
-  <dd><%= @contract.term %></dd>
-  <dt>Data Inicial</dt>
-  <dd><%= @contract.initial_date.strftime("%d/%m/%Y") %></dd>
-  <dt>Data Final</dt>
-  <dd><%= @contract.deadline.strftime("%d/%m/%Y") %></dd>
-  <dt>Total</dt>
-  <dd><%= number_to_currency(@contract.total_price, unit: "R$ ", separator: ",", delimiter: ".") %></dd>
-  <dt>Endereço de Entrega</dt>
-  <dd><%= @contract.delivery_address %></dd>
-  <dt>Responsável</dt>
-  <dd><%= @contract.responsable %></dd>
-</dl>
-<% if @contract.delivery_receipt? %>
-<%= link_to 'Visualizar Recibo de Entrega', delivery_receipt_contract_path, class: "btn btn-primary" %>
-<% else %>
-<%= link_to 'Emitir Recibo de Entrega', delivery_receipt_contract_path, method: 'post', class: "btn btn-primary" %>
-<% end %>
-<% if @contract.devolution_receipt? %>
-<%= link_to 'Visualizar Recibo de Devolução', devolution_receipt_contract_path, class: "btn btn-primary" %>
-<% else %>
-<div class="row"><br>
+<div class="row">
   <div class="col-md-12 col-sm-12">
-    <%= form_tag devolution_receipt_contract_path, { class: "form-inline" } do %>
-    <div class="form-group">
-      <%= label_tag(:employee, "Funcionário") %>
-      <%= text_field_tag(:employee, "", class:"form-control") %>
+    <div class="page-header">
+      <h1>Contrato
+        <%= @contract.id %></h1>
+      <!-- TODO: alterar para numero do contrato quando criar o campo -->
     </div>
-    <%= submit_tag 'Emitir Recibo de Devolução', class:"btn btn-primary" %>
-    <% end %>
+    <dl class="dl-horizontal">
+      <dt>Empresa</dt>
+      <dd><%= "#{@contract.client.fantasy_name} #{@contract.client.state}" %></dd>
+      <dt>Ferramentas</dt>
+      <% @contract.tools.each do |tool| %>
+      <dd><%= "#{tool.serial_number} #{tool.name}" %></dd>
+      <% end %>
+      <dt>Prazo</dt>
+      <dd><%= @contract.term %></dd>
+      <dt>Data Inicial</dt>
+      <dd><%= @contract.initial_date.strftime("%d/%m/%Y") %></dd>
+      <dt>Data Final</dt>
+      <dd><%= @contract.deadline.strftime("%d/%m/%Y") %></dd>
+      <dt>Total</dt>
+      <dd><%= number_to_currency(@contract.total_price, unit: "R$ ", separator: ",", delimiter: ".") %></dd>
+      <dt>Endereço de Entrega</dt>
+      <dd><%= @contract.delivery_address %></dd>
+      <dt>Responsável</dt>
+      <dd><%= @contract.responsable %></dd>
+    </dl>
   </div>
-  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: 'delivery_receipt' %>
+  </div>
+  <div class="col-md-9">
+    <%= render partial: 'devolution_receipt' %>
+  </div>
 </div>
